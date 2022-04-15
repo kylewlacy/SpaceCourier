@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckrwelvatedia"]
+
+[ext_resource type="PackedScene" uid="uid://cvqo78bsoj4kl" path="res://ship.tscn" id="1_5mk5n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_smpky"]
+
+[node name="Main" type="Node"]
+
+[node name="Planet" type="MeshInstance3D" parent="."]
+mesh = SubResource( "SphereMesh_smpky" )
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.23954)
+
+[node name="Sun" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.603, 8.41744, 9.64028)
+light_energy = 10.0
+omni_range = 1000.0
+
+[node name="Ship" parent="." instance=ExtResource( "1_5mk5n" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14435, 0)
