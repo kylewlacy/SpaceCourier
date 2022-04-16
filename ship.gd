@@ -16,7 +16,7 @@ func _physics_process(_delta):
 		apply_torque(Vector3(0, 0, -rotation_force))
 
 func _on_gravity_attraction(attractor: GravityAttractor):
-	var vector = attractor.position - position
+	var vector = attractor.global_transform.origin - global_transform.origin
 	var distance = vector.length()
 	var gravity_force = vector.normalized() * (attractor.gravity_mass / (distance * distance))
 	apply_central_force(gravity_force)
