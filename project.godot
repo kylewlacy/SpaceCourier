@@ -8,6 +8,16 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node3D",
+"class": &"GravityAttractor",
+"language": &"GDScript",
+"path": "res://gravity_attractor.gd"
+}]
+_global_script_class_icons={
+"GravityAttractor": ""
+}
+
 [application]
 
 config/name="SpaceCourier"

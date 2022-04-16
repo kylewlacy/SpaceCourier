@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsh7kkjfax815"]
+
+[ext_resource type="Script" path="res://gravity_attractor.gd" id="1_10exn"]
+
+[node name="GravityAttractor" type="Node3D"]
+script = ExtResource( "1_10exn" )
