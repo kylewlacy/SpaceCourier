@@ -24,3 +24,6 @@ func _on_gravity_attraction(attractor: GravityAttractor):
 func pick_up(pickup: Pickup):
 	print("Picked up")
 	pickup.attach($Pickups)
+
+func get_attachment_position() -> Vector3:
+	return $AttachmentPoint.global_transform.origin

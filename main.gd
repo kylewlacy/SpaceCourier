@@ -10,9 +10,8 @@ func _ready():
 	add_child(ship_curve_debug_mesh_instance)
 
 func _physics_process(_delta):
-	var origin = $Ship.position
 	var ship_curve = $ShipPath.curve
-	ship_curve.add_point(origin)
+	ship_curve.add_point($Ship.get_attachment_position())
 
 	$ShipPath/ShipPathFollow.offset = ship_curve.get_baked_length() - 0.5
 
