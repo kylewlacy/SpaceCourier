@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckrwelvatedia"]
+[gd_scene load_steps=6 format=3 uid="uid://ckrwelvatedia"]
 
 [ext_resource type="PackedScene" uid="uid://xbg4xjp5kror" path="res://planet.tscn" id="1_1u7jd"]
 [ext_resource type="PackedScene" uid="uid://cvqo78bsoj4kl" path="res://ship.tscn" id="1_5mk5n"]
 [ext_resource type="Script" path="res://main.gd" id="1_jt5ix"]
 [ext_resource type="PackedScene" uid="uid://xpxv3vi6o4ai" path="res://pickup.tscn" id="3_kvbm5"]
+
+[sub_resource type="Curve3D" id="Curve3D_rvji6"]
 
 [node name="Main" type="Node"]
 script = ExtResource( "1_jt5ix" )
@@ -31,6 +33,13 @@ radius = 0.42
 
 [node name="Pickup" parent="." instance=ExtResource( "3_kvbm5" )]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -1.2045, 2.06856, 0)
+
+[node name="ShipPath" type="Path3D" parent="."]
+curve = SubResource( "Curve3D_rvji6" )
+
+[node name="ShipPathFollow" type="PathFollow3D" parent="ShipPath"]
+cubic_interp = false
+loop = false
 
 [connection signal="collided" from="Pickup" to="." method="_on_pickup_collided"]
 [connection signal="picked_up" from="Pickup" to="." method="_on_pickup_picked_up"]
