@@ -1,6 +1,6 @@
 extends Node
 
-func _on_pickup_collided(pickup, body):
+func _on_pickup_collided(_pickup, body):
 	if body == $Ship:
 		print("Collided with ship")
 

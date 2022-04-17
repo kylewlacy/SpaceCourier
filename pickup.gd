@@ -14,14 +14,17 @@ func attach(new_parent: Node, new_local_position: Vector3 = Vector3.ZERO):
 
 	state = PickupState.ATTACHED
 
+	call_deferred("attach_to_new_parent", new_parent, new_local_position)
+
+	$PickupArea.set_deferred("monitoring", false)
+	$CollisionArea.set_deferred("monitoring", true)
+
+func attach_to_new_parent(new_parent: Node, new_local_position: Vector3 = Vector3.ZERO):
 	var parent = get_parent()
 	if parent:
 		parent.remove_child(self)
 	self.position = new_local_position
 	new_parent.add_child(self)
-
-	$PickupArea.set_deferred("monitoring", false)
-	$CollisionArea.set_deferred("monitoring", true)
 
 func _on_pickup_area_body_entered(body: Node3D):
 	if state == PickupState.READY_TO_PICKUP:
