@@ -23,3 +23,6 @@ shape = SubResource( "BoxShape3D_8ywc5" )
 
 [node name="Top" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0791716, 0)
+
+[node name="Pickups" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.241788, 0)

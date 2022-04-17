@@ -20,3 +20,7 @@ func _on_gravity_attraction(attractor: GravityAttractor):
 	var distance = vector.length()
 	var gravity_force = vector.normalized() * (attractor.gravity_mass / (distance * distance))
 	apply_central_force(gravity_force)
+
+func pick_up(pickup: Pickup):
+	print("Picked up")
+	pickup.attach($Pickups)

@@ -13,9 +13,15 @@ _global_script_classes=[{
 "class": &"GravityAttractor",
 "language": &"GDScript",
 "path": "res://gravity_attractor.gd"
+}, {
+"base": "Node3D",
+"class": &"Pickup",
+"language": &"GDScript",
+"path": "res://pickup.gd"
 }]
 _global_script_class_icons={
-"GravityAttractor": ""
+"GravityAttractor": "",
+"Pickup": ""
 }
 
 [application]

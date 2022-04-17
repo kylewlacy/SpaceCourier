@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://xpxv3vi6o4ai"]
+
+[ext_resource type="Script" path="res://pickup.gd" id="1_s2pyg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ufj0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_au0w5"]
+radius = 1.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ewus5"]
+
+[node name="Pickup" type="Node3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+script = ExtResource( "1_s2pyg" )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "BoxMesh_7ufj0" )
+
+[node name="PickupArea" type="Area3D" parent="."]
+
+[node name="PickupHitbox" type="CollisionShape3D" parent="PickupArea"]
+shape = SubResource( "SphereShape3D_au0w5" )
+
+[node name="CollisionArea" type="Area3D" parent="."]
+monitoring = false
+
+[node name="CollisionHitbox" type="CollisionShape3D" parent="CollisionArea"]
+shape = SubResource( "BoxShape3D_ewus5" )
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
