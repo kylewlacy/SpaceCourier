@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckrwelvatedia"]
+[gd_scene load_steps=7 format=3 uid="uid://ckrwelvatedia"]
 
 [ext_resource type="PackedScene" uid="uid://xbg4xjp5kror" path="res://planet.tscn" id="1_1u7jd"]
 [ext_resource type="PackedScene" uid="uid://cvqo78bsoj4kl" path="res://ship.tscn" id="1_5mk5n"]
 [ext_resource type="Script" path="res://main.gd" id="1_jt5ix"]
 [ext_resource type="PackedScene" uid="uid://xpxv3vi6o4ai" path="res://pickup.tscn" id="3_kvbm5"]
+[ext_resource type="Script" path="res://camera_controller.gd" id="4_gdgpo"]
 
 [sub_resource type="Curve3D" id="Curve3D_rvji6"]
 
@@ -15,10 +16,11 @@ pickup_scene = ExtResource( "3_kvbm5" )
 transform = Transform3D(1.108, 0, 0, 0, 1.108, 0, 0, 0, 1.108, 2.46459, -2.41238, 0)
 radius = 1.108
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CameraController" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.01583)
 fov = 50.0
 size = 6.41
+script = ExtResource( "4_gdgpo" )
 
 [node name="Sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.603, 8.41744, 9.64028)

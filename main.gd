@@ -9,6 +9,8 @@ var ship_curve_debug_mesh: ImmediateMesh
 var attached_pickup_followers: Array[PathFollow3D] = []
 
 func _ready():
+	$CameraController.set_focus($Ship)
+
 	spawn_new_pickup()
 
 	if enable_debug_draw:
