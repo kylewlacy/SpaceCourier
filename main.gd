@@ -1,13 +1,14 @@
 extends Node
 
+var enable_debug_draw = false
 var ship_curve_debug_mesh: ImmediateMesh
 
 func _ready():
-	pass
-	ship_curve_debug_mesh = ImmediateMesh.new()
-	var ship_curve_debug_mesh_instance = MeshInstance3D.new()
-	ship_curve_debug_mesh_instance.mesh = ship_curve_debug_mesh
-	add_child(ship_curve_debug_mesh_instance)
+	if enable_debug_draw:
+		ship_curve_debug_mesh = ImmediateMesh.new()
+		var ship_curve_debug_mesh_instance = MeshInstance3D.new()
+		ship_curve_debug_mesh_instance.mesh = ship_curve_debug_mesh
+		add_child(ship_curve_debug_mesh_instance)
 
 func _physics_process(_delta):
 	var ship_curve = $ShipPath.curve
