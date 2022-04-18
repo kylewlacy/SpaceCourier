@@ -6,6 +6,8 @@ var pickup_scene: PackedScene
 var enable_debug_draw = true
 var ship_curve_debug_mesh: ImmediateMesh
 
+var attached_pickup_followers: Array[PathFollow3D] = []
+
 func _ready():
 	spawn_new_pickup()
 
@@ -18,8 +20,11 @@ func _ready():
 func _physics_process(_delta):
 	var ship_curve = $ShipPath.curve
 	ship_curve.add_point($Ship.get_attachment_position())
+	var ship_curve_length = ship_curve.get_baked_length()
 
-	$ShipPath/ShipPathFollow.offset = ship_curve.get_baked_length() - 0.5
+	for i in range(attached_pickup_followers.size()):
+		var follow = attached_pickup_followers[i]
+		follow.offset = ship_curve_length - ((i + 1) * 0.5)
 
 	if ship_curve_debug_mesh:
 		ship_curve_debug_mesh.clear_surfaces()
@@ -35,7 +40,10 @@ func _on_pickup_collided(_pickup, body):
 
 func _on_pickup_picked_up(pickup, body):
 	if body == $Ship:
-		pickup.attach($ShipPath/ShipPathFollow)
+		var follower = PathFollow3D.new()
+		$ShipPath.add_child(follower)
+		attached_pickup_followers.append(follower)
+		pickup.attach(follower)
 		spawn_new_pickup()
 
 func spawn_new_pickup():
