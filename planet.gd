@@ -1,5 +1,6 @@
 @tool
 extends Node3D
+class_name Planet
 
 @export
 var radius: float = 1.0:

@@ -1,9 +1,14 @@
 extends Node
 
-var enable_debug_draw = false
+@export
+var pickup_scene: PackedScene
+
+var enable_debug_draw = true
 var ship_curve_debug_mesh: ImmediateMesh
 
 func _ready():
+	spawn_new_pickup()
+
 	if enable_debug_draw:
 		ship_curve_debug_mesh = ImmediateMesh.new()
 		var ship_curve_debug_mesh_instance = MeshInstance3D.new()
@@ -31,3 +36,27 @@ func _on_pickup_collided(_pickup, body):
 func _on_pickup_picked_up(pickup, body):
 	if body == $Ship:
 		pickup.attach($ShipPath/ShipPathFollow)
+		spawn_new_pickup()
+
+func spawn_new_pickup():
+	var location = get_new_pickup_location()
+	var pickup = pickup_scene.instantiate()
+	pickup.position = location
+	pickup.picked_up.connect(_on_pickup_picked_up)
+	pickup.collided.connect(_on_pickup_collided)
+	$Pickups.add_child(pickup)
+
+func get_new_pickup_location() -> Vector3:
+	var planets = get_tree().get_nodes_in_group("planets")
+	var planet_index = randi_range(0, planets.size() - 1)
+	var planet := planets[planet_index] as Planet
+	if not planet:
+		push_warning("Node in group 'planets' was not type Planet")
+		return Vector3.ZERO
+	var planet_center = planet.global_transform.origin
+	var rotation = randf_range(0, 2 * PI)
+	var distance_from_surface = randf_range(0.5, 0.75)
+	var distance = distance_from_surface + planet.radius
+	var location = planet_center + Vector3(distance * sin(rotation), distance * cos(rotation), 0)
+	return location
+

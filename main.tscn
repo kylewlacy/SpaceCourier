@@ -9,6 +9,7 @@
 
 [node name="Main" type="Node"]
 script = ExtResource( "1_jt5ix" )
+pickup_scene = ExtResource( "3_kvbm5" )
 
 [node name="Planet" parent="." instance=ExtResource( "1_1u7jd" )]
 transform = Transform3D(1.108, 0, 0, 0, 1.108, 0, 0, 0, 1.108, 2.46459, -2.41238, 0)
@@ -31,9 +32,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98596, 0)
 transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, -2.08171, 1.81569, 0)
 radius = 0.42
 
-[node name="Pickup" parent="." instance=ExtResource( "3_kvbm5" )]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -1.2045, 2.06856, 0)
-
 [node name="ShipPath" type="Path3D" parent="."]
 curve = SubResource( "Curve3D_rvji6" )
 
@@ -41,5 +39,4 @@ curve = SubResource( "Curve3D_rvji6" )
 cubic_interp = false
 loop = false
 
-[connection signal="collided" from="Pickup" to="." method="_on_pickup_collided"]
-[connection signal="picked_up" from="Pickup" to="." method="_on_pickup_picked_up"]
+[node name="Pickups" type="Node3D" parent="."]
