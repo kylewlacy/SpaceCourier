@@ -4,6 +4,9 @@ extends RigidDynamicBody3D
 var thrust_force = 2
 
 @export
+var gravity_pow = 2.0
+
+@export
 var rotation_force = PI / 360
 
 func _physics_process(_delta):
@@ -18,7 +21,7 @@ func _physics_process(_delta):
 func _on_gravity_attraction(attractor: GravityAttractor):
 	var vector = attractor.global_transform.origin - global_transform.origin
 	var distance = vector.length()
-	var gravity_force = vector.normalized() * (attractor.gravity_mass / (distance * distance))
+	var gravity_force = vector.normalized() * (attractor.gravity_mass / pow(distance, gravity_pow))
 	apply_central_force(gravity_force)
 
 func pick_up(pickup: Pickup):
