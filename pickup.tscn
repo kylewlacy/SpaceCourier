@@ -11,7 +11,7 @@ radius = 0.15
 [sub_resource type="BoxShape3D" id="BoxShape3D_ewus5"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="Pickup" type="Node3D"]
+[node name="Pickup" type="Node3D" groups=["camera_tracking"]]
 script = ExtResource( "1_s2pyg" )
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
