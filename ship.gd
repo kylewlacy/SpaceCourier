@@ -7,7 +7,7 @@ var thrust_force = 2
 var gravity_pow = 2.0
 
 @export
-var rotation_force = PI / 360
+var rotation_force = 25 * PI / 360
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("thrust"):

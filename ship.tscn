@@ -1,25 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvqo78bsoj4kl"]
 
 [ext_resource type="Script" path="res://ship.gd" id="1_j0n8o"]
+[ext_resource type="PackedScene" uid="uid://cnlv1wi0uymwq" path="res://ship.blend" id="2_brr0k"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_637xo"]
-size = Vector3(0.315, 0.165, 0.075)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8ywc5"]
-size = Vector3(0.11, 0.11, 0.1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mgve"]
+radius = 0.115
+height = 0.509
 
 [node name="Ship" type="RigidDynamicBody3D" groups=["gravity_attraction"]]
 angular_damp_mode = 1
 angular_damp = 3.5
 script = ExtResource( "1_j0n8o" )
-rotation_force = 0.025
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource( "PrismMesh_637xo" )
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0.000937153, 0)
-shape = SubResource( "BoxShape3D_8ywc5" )
+[node name="Mesh" parent="." instance=ExtResource( "2_brr0k" )]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="Top" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0791716, 0)
@@ -29,3 +23,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.241788, 0)
 
 [node name="AttachmentPoint" type="Position3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0903665, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "CapsuleShape3D_1mgve" )
