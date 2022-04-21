@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvqo78bsoj4kl"]
 
 [ext_resource type="Script" path="res://ship.gd" id="1_j0n8o"]
-[ext_resource type="PackedScene" uid="uid://cnlv1wi0uymwq" path="res://ship.blend" id="2_brr0k"]
+[ext_resource type="PackedScene" uid="uid://c2qhm1o3m17ck" path="res://ship_model.tscn" id="2_u3s5h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mgve"]
 radius = 0.115
@@ -12,7 +12,7 @@ angular_damp_mode = 1
 angular_damp = 3.5
 script = ExtResource( "1_j0n8o" )
 
-[node name="Mesh" parent="." instance=ExtResource( "2_brr0k" )]
+[node name="Mesh" parent="." instance=ExtResource( "2_u3s5h" )]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="Top" type="Node3D" parent="."]
@@ -22,7 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0791716, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.241788, 0)
 
 [node name="AttachmentPoint" type="Position3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0903665, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.398629, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource( "CapsuleShape3D_1mgve" )

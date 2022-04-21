@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2qhm1o3m17ck"]
+
+[ext_resource type="PackedScene" uid="uid://cnlv1wi0uymwq" path="res://ship.blend" id="1_vs2f3"]
+[ext_resource type="Material" uid="uid://bdjovo80c01y4" path="res://clay.tres" id="2_yhhxs"]
+
+[node name="ship" instance=ExtResource( "1_vs2f3" )]
+
+[node name="Body003" parent="." index="0"]
+surface_material_override/0 = ExtResource( "2_yhhxs" )
+
+[node name="Fins003" parent="." index="1"]
+surface_material_override/0 = ExtResource( "2_yhhxs" )
+
+[node name="Hat002" parent="." index="2"]
+surface_material_override/0 = ExtResource( "2_yhhxs" )
