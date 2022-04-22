@@ -26,7 +26,7 @@ func _physics_process(_delta):
 
 	for i in range(attached_pickup_followers.size()):
 		var follow = attached_pickup_followers[i]
-		follow.offset = ship_curve_length - ((i + 1) * 0.5)
+		follow.offset = ship_curve_length - (1.0 + (i * 0.5))
 
 	if ship_curve_debug_mesh:
 		ship_curve_debug_mesh.clear_surfaces()

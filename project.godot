@@ -22,7 +22,7 @@ _global_script_classes=[{
 "base": "Node3D",
 "class": &"Planet",
 "language": &"GDScript",
-"path": "res://planet.gd"
+"path": "res://planets/planet.gd"
 }]
 _global_script_class_icons={
 "GravityAttractor": "",

@@ -12,6 +12,13 @@ var radius: float = 1.0:
 		scale.z = new_radius
 
 @export
+var material: Material:
+	get:
+		return $Mesh.get_active_material(0)
+	set(new_material):
+		$Mesh.set_surface_override_material(0, new_material)
+
+@export
 var mass: float = 1.0:
 	get:
 		return $GravityAttractor.gravity_mass
