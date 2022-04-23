@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bajtmtv2hlfxe"]
+[gd_scene load_steps=9 format=3 uid="uid://bajtmtv2hlfxe"]
 
 [ext_resource type="PackedScene" uid="uid://xbg4xjp5kror" path="res://planets/planet.tscn" id="1_1u7jd"]
 [ext_resource type="PackedScene" uid="uid://cvqo78bsoj4kl" path="res://ship.tscn" id="1_5mk5n"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://xpxv3vi6o4ai" path="res://pickup.tscn" id="3_kvbm5"]
 [ext_resource type="Material" uid="uid://cq7li7gpthr8o" path="res://planets/earth/earth_material.tres" id="4_6hliy"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="4_gdgpo"]
+[ext_resource type="Material" uid="uid://dtv2ncb4r8xvs" path="res://planets/moon/moon_material.tres" id="7_kipkg"]
 
 [sub_resource type="Curve3D" id="Curve3D_rvji6"]
 
@@ -37,6 +38,7 @@ gravity_pow = 1.3
 [node name="Planet2" parent="." instance=ExtResource( "1_1u7jd" )]
 transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, -2.08171, 1.81569, 0)
 radius = 0.42
+material = ExtResource( "7_kipkg" )
 
 [node name="ShipPath" type="Path3D" parent="."]
 curve = SubResource( "Curve3D_rvji6" )
