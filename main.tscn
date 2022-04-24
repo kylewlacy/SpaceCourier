@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkipalwnfvyem"]
+[gd_scene load_steps=15 format=3 uid="uid://dkipalwnfvyem"]
 
 [ext_resource type="PackedScene" uid="uid://xbg4xjp5kror" path="res://planets/planet.tscn" id="1_1u7jd"]
 [ext_resource type="PackedScene" uid="uid://cvqo78bsoj4kl" path="res://ship.tscn" id="1_5mk5n"]
@@ -7,6 +7,11 @@
 [ext_resource type="Material" uid="uid://cq7li7gpthr8o" path="res://planets/earth/earth_material.tres" id="4_6hliy"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="4_gdgpo"]
 [ext_resource type="Material" uid="uid://dtv2ncb4r8xvs" path="res://planets/moon/moon_material.tres" id="7_kipkg"]
+[ext_resource type="Script" path="res://starfield.gd" id="8_gvtd2"]
+[ext_resource type="SphereMesh" uid="uid://e63raa5cl8a4" path="res://star.tres" id="9_emndh"]
+
+[sub_resource type="CameraEffects" id="CameraEffects_oycn5"]
+override_exposure_enabled = true
 
 [sub_resource type="Curve3D" id="Curve3D_rvji6"]
 
@@ -19,6 +24,10 @@ sky_material = SubResource( "ShaderMaterial_xkejh" )
 background_mode = 1
 background_color = Color(0.105882, 0, 0.196078, 1)
 sky = SubResource( "Sky_uiemh" )
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 8.0
+glow_bloom = 0.14
 
 [node name="Main" type="Node"]
 script = ExtResource( "1_jt5ix" )
@@ -32,6 +41,7 @@ mass = 1.5
 
 [node name="CameraController" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.01583)
+effects = SubResource( "CameraEffects_oycn5" )
 fov = 50.0
 size = 6.41
 script = ExtResource( "4_gdgpo" )
@@ -61,3 +71,14 @@ loop = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( "Environment_umux7" )
+
+[node name="Starfield" type="Node3D" parent="."]
+script = ExtResource( "8_gvtd2" )
+close_stars = 15
+far_stars = 400
+seed = 123
+mesh = ExtResource( "9_emndh" )
+
+[node name="ExampleStar" type="MeshInstance3D" parent="Starfield"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.20032, -9.80873)
+mesh = ExtResource( "9_emndh" )
