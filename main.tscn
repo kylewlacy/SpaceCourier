@@ -82,3 +82,11 @@ mesh = ExtResource( "9_emndh" )
 [node name="ExampleStar" type="MeshInstance3D" parent="Starfield"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.20032, -9.80873)
 mesh = ExtResource( "9_emndh" )
+
+[node name="BackLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4517, -8.64024, -10.642)
+light_color = Color(0, 0.0862745, 0.72549, 1)
+light_energy = 1.96
+light_size = 0.1
+light_specular = 0.0
+omni_range = 231.851
