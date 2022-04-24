@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bajtmtv2hlfxe"]
+[gd_scene load_steps=9 format=3 uid="uid://dkipalwnfvyem"]
 
 [ext_resource type="PackedScene" uid="uid://xbg4xjp5kror" path="res://planets/planet.tscn" id="1_1u7jd"]
 [ext_resource type="PackedScene" uid="uid://cvqo78bsoj4kl" path="res://ship.tscn" id="1_5mk5n"]
 [ext_resource type="Script" path="res://main.gd" id="1_jt5ix"]
-[ext_resource type="PackedScene" uid="uid://xpxv3vi6o4ai" path="res://pickup.tscn" id="3_kvbm5"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="3_kvbm5"]
 [ext_resource type="Material" uid="uid://cq7li7gpthr8o" path="res://planets/earth/earth_material.tres" id="4_6hliy"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="4_gdgpo"]
 [ext_resource type="Material" uid="uid://dtv2ncb4r8xvs" path="res://planets/moon/moon_material.tres" id="7_kipkg"]

@@ -17,7 +17,7 @@ _global_script_classes=[{
 "base": "Node3D",
 "class": &"Pickup",
 "language": &"GDScript",
-"path": "res://pickup.gd"
+"path": "res://pickups/pickup.gd"
 }, {
 "base": "Node3D",
 "class": &"Planet",
