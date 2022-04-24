@@ -9,6 +9,10 @@ var ship_curve_debug_mesh: ImmediateMesh
 var attached_pickup_followers: Array[PathFollow3D] = []
 
 func _ready():
+	$ShipSmoke.emitting = false
+	$ShipSmoke.global_transform.origin = Vector3.ZERO
+	$ShipSmoke.rotation = Vector3.ZERO
+
 	$CameraController.set_focus($Ship)
 
 	spawn_new_pickup()
@@ -18,6 +22,14 @@ func _ready():
 		var ship_curve_debug_mesh_instance = MeshInstance3D.new()
 		ship_curve_debug_mesh_instance.mesh = ship_curve_debug_mesh
 		add_child(ship_curve_debug_mesh_instance)
+
+func _process(_delta):
+	var smoke_emission_point = $Ship.get_smoke_position()
+	var smoke_emission_normal = (smoke_emission_point - $Ship.global_transform.origin).normalized()
+	var rotated_smoke_emission_normal = Quaternion(Vector3.FORWARD, PI / 2) * smoke_emission_normal
+	$ShipSmoke.emission_points = PackedVector3Array([smoke_emission_point])
+	$ShipSmoke.emission_normals = PackedVector3Array([rotated_smoke_emission_normal])
+	$ShipSmoke.emitting = $Ship.is_thrusting()
 
 func _physics_process(_delta):
 	var ship_curve = $ShipPath.curve
