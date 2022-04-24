@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkipalwnfvyem"]
+[gd_scene load_steps=12 format=3 uid="uid://dkipalwnfvyem"]
 
 [ext_resource type="PackedScene" uid="uid://xbg4xjp5kror" path="res://planets/planet.tscn" id="1_1u7jd"]
 [ext_resource type="PackedScene" uid="uid://cvqo78bsoj4kl" path="res://ship.tscn" id="1_5mk5n"]
@@ -9,6 +9,16 @@
 [ext_resource type="Material" uid="uid://dtv2ncb4r8xvs" path="res://planets/moon/moon_material.tres" id="7_kipkg"]
 
 [sub_resource type="Curve3D" id="Curve3D_rvji6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkejh"]
+
+[sub_resource type="Sky" id="Sky_uiemh"]
+sky_material = SubResource( "ShaderMaterial_xkejh" )
+
+[sub_resource type="Environment" id="Environment_umux7"]
+background_mode = 1
+background_color = Color(0.105882, 0, 0.196078, 1)
+sky = SubResource( "Sky_uiemh" )
 
 [node name="Main" type="Node"]
 script = ExtResource( "1_jt5ix" )
@@ -48,3 +58,6 @@ cubic_interp = false
 loop = false
 
 [node name="Pickups" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "Environment_umux7" )
