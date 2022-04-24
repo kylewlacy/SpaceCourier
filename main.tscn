@@ -74,9 +74,9 @@ environment = SubResource( "Environment_umux7" )
 
 [node name="Starfield" type="Node3D" parent="."]
 script = ExtResource( "8_gvtd2" )
-close_stars = 15
+close_stars = 20
 far_stars = 400
-seed = 123
+seed = 7
 mesh = ExtResource( "9_emndh" )
 
 [node name="ExampleStar" type="MeshInstance3D" parent="Starfield"]

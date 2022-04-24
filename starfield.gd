@@ -29,7 +29,7 @@ func generate_stars():
 	for i in range(close_stars):
 		generate_star("Close star %s" % i, 8, 10)
 	for i in range(far_stars):
-		generate_star("Far star %s" % i, 20, 40)
+		generate_star("Far star %s" % i, 30, 60)
 
 func generate_star(label: String, min_distance: float, max_distance: float):
 	var star = MeshInstance3D.new()
