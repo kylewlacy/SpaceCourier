@@ -1,10 +1,13 @@
 extends Node3D
 
 @export
-var close_stars = 50
+var near_stars = 50
 
 @export
-var far_stars = 200
+var mid_stars = 200
+
+@export
+var far_stars = 500
 
 @export
 var seed = 1
@@ -16,38 +19,50 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.set_seed(seed)
-	remove_all_children()
+	remove_example()
 	generate_stars()
 
 # For testing purposes, the starfield includes an example star. We remove it
 # at runtime
-func remove_all_children():
-	for child in get_children():
-		remove_child(child)
+func remove_example():
+	for example in $Example.get_children():
+		example.queue_free()
+	$Example.queue_free()
 
 func generate_stars():
-	for i in range(close_stars):
-		generate_star("Close star %s" % i, 8, 10)
+	for i in range(near_stars):
+		generate_star("Close star %s" % i, area_aabb($Area/Near))
+	for i in range(mid_stars):
+		var mid_aabb = $Area/Mid.shape.get_debug_mesh().get_aabb()
+		generate_star("Mid star %s" % i, area_aabb($Area/Mid))
 	for i in range(far_stars):
-		generate_star("Far star %s" % i, 30, 60)
+		var far_aabb = $Area/Far.shape.get_debug_mesh().get_aabb()
+		generate_star("Far star %s" % i, area_aabb($Area/Far))
 
-func generate_star(label: String, min_distance: float, max_distance: float):
+func generate_star(label: String, bounding_box: AABB):
 	var star = MeshInstance3D.new()
 	star.name = label
 	star.mesh = mesh
-	star.position = new_star_position(min_distance, max_distance)
+	star.position = new_star_position(bounding_box)
 
 	add_child(star)
 
 
-func new_star_position(min_distance: float, max_distance: float) -> Vector3:
-	var distance = rng.randf_range(min_distance, max_distance)
-	var polar_angle = rng.randf_range(PI / 2, PI)
-	#var polar_angle = rng.randf_range(0, PI)
-	var azimuthal_angle = rng.randf_range(0, 2 * PI)
-
-	var x = distance * cos(azimuthal_angle) * sin(polar_angle)
-	var y = distance * sin(azimuthal_angle) * sin(polar_angle)
-	var z = distance * cos(polar_angle)
+func new_star_position(bounding_box: AABB) -> Vector3:
+	var x = rng.randf_range(bounding_box.position.x, bounding_box.end.x)
+	var y = rng.randf_range(bounding_box.position.y, bounding_box.end.y)
+	var z = rng.randf_range(bounding_box.position.z, bounding_box.end.z)
 
 	return Vector3(x, y, z)
+
+func area_aabb(area: CollisionShape3D) -> AABB:
+	var box = area.shape as BoxShape3D
+	if not box:
+		push_warning("Area is not a BoxShape3D")
+		return make_aabb(area.position, Vector3.ONE)
+
+	return make_aabb(area.position, box.size)
+
+# FIXME: This is different from `make_aabb` in `camera_controller.gd`
+func make_aabb(center: Vector3, size: Vector3) -> AABB:
+	return AABB(center - (size / 2), size)

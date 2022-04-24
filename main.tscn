@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkipalwnfvyem"]
+[gd_scene load_steps=18 format=3 uid="uid://dkipalwnfvyem"]
 
 [ext_resource type="PackedScene" uid="uid://xbg4xjp5kror" path="res://planets/planet.tscn" id="1_1u7jd"]
 [ext_resource type="PackedScene" uid="uid://cvqo78bsoj4kl" path="res://ship.tscn" id="1_5mk5n"]
@@ -28,6 +28,15 @@ glow_enabled = true
 glow_normalized = true
 glow_intensity = 8.0
 glow_bloom = 0.14
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ixp1q"]
+size = Vector3(100, 100, 7.337)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ym76"]
+size = Vector3(250, 250, 54.5556)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j5r62"]
+size = Vector3(554.808, 521.392, 41.1946)
 
 [node name="Main" type="Node"]
 script = ExtResource( "1_jt5ix" )
@@ -74,14 +83,32 @@ environment = SubResource( "Environment_umux7" )
 
 [node name="Starfield" type="Node3D" parent="."]
 script = ExtResource( "8_gvtd2" )
-close_stars = 20
-far_stars = 400
-seed = 7
+near_stars = 500
+mid_stars = 1000
+far_stars = 5000
+seed = 2
 mesh = ExtResource( "9_emndh" )
 
-[node name="ExampleStar" type="MeshInstance3D" parent="Starfield"]
+[node name="Example" type="Node3D" parent="Starfield"]
+
+[node name="ExampleStar" type="MeshInstance3D" parent="Starfield/Example"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.20032, -9.80873)
 mesh = ExtResource( "9_emndh" )
+skeleton = NodePath("../..")
+
+[node name="Area" type="Area3D" parent="Starfield"]
+
+[node name="Near" type="CollisionShape3D" parent="Starfield/Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1632)
+shape = SubResource( "BoxShape3D_ixp1q" )
+
+[node name="Mid" type="CollisionShape3D" parent="Starfield/Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50.1024)
+shape = SubResource( "BoxShape3D_8ym76" )
+
+[node name="Far" type="CollisionShape3D" parent="Starfield/Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -109.871)
+shape = SubResource( "BoxShape3D_j5r62" )
 
 [node name="BackLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4517, -8.64024, -10.642)
