@@ -48,7 +48,7 @@ script = ExtResource( "4_gdgpo" )
 
 [node name="Sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.603, 8.41744, 9.64028)
-light_energy = 10.0
+light_energy = 18.0
 omni_range = 1000.0
 
 [node name="Ship" parent="." instance=ExtResource( "1_5mk5n" )]
