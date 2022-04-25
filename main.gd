@@ -23,6 +23,10 @@ func _process(_delta):
 	$ShipSmoke.emitting = $Ship.is_thrusting()
 
 func _physics_process(_delta):
+	update_ship_curve()
+
+# TODO: This function slows down significantly after collecting lots of pickups
+func update_ship_curve():
 	var ship_curve = $ShipPath.curve
 	ship_curve.add_point($Ship.get_attachment_position())
 	var ship_curve_length = ship_curve.get_baked_length()
