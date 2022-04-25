@@ -10,7 +10,7 @@ var mid_stars = 200
 var far_stars = 500
 
 @export
-var seed = 1
+var star_seed = 1
 
 @export
 var mesh: Mesh
@@ -18,7 +18,7 @@ var mesh: Mesh
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	rng.set_seed(seed)
+	rng.set_seed(star_seed)
 	remove_example()
 	generate_stars()
 
@@ -33,10 +33,8 @@ func generate_stars():
 	for i in range(near_stars):
 		generate_star("Close star %s" % i, area_aabb($Area/Near))
 	for i in range(mid_stars):
-		var mid_aabb = $Area/Mid.shape.get_debug_mesh().get_aabb()
 		generate_star("Mid star %s" % i, area_aabb($Area/Mid))
 	for i in range(far_stars):
-		var far_aabb = $Area/Far.shape.get_debug_mesh().get_aabb()
 		generate_star("Far star %s" % i, area_aabb($Area/Far))
 
 func generate_star(label: String, bounding_box: AABB):
@@ -64,5 +62,5 @@ func area_aabb(area: CollisionShape3D) -> AABB:
 	return make_aabb(area.position, box.size)
 
 # FIXME: This is a duplicate of `make_aabb` in `camera_controller.gd`
-func make_aabb(center: Vector3, size: Vector3) -> AABB:
-	return AABB(center - (size / 2), size)
+func make_aabb(center: Vector3, box_size: Vector3) -> AABB:
+	return AABB(center - (box_size / 2), box_size)

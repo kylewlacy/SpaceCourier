@@ -107,7 +107,7 @@ script = ExtResource( "8_gvtd2" )
 near_stars = 500
 mid_stars = 1000
 far_stars = 5000
-seed = 2
+star_seed = 2
 mesh = ExtResource( "9_emndh" )
 
 [node name="Example" type="Node3D" parent="Starfield"]
