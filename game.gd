@@ -1,12 +1,16 @@
 extends Node
 class_name Game
 
+signal game_over(cause: GameOver.GameOverCause, score: int)
+
 @export
 var pickup_scene: PackedScene
 
 var next_pickup_hemisphere = 0
 
 var attached_pickup_followers: Array[PathFollow3D] = []
+
+var score = 0
 
 func _ready():
 	$ShipSmoke.emitting = false
@@ -40,11 +44,13 @@ func update_ship_curve():
 
 func _on_pickup_collided(_pickup, body):
 	if body == $Ship:
-		print("Collided with ship")
+		game_over.emit(GameOver.GameOverCause.CRASHED_BOX, score)
 
 
 func _on_pickup_picked_up(pickup, body):
 	if body == $Ship:
+		score += 1
+
 		var follower = PathFollow3D.new()
 		$ShipPath.add_child(follower)
 		attached_pickup_followers.append(follower)
