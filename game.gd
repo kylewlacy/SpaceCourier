@@ -1,4 +1,5 @@
 extends Node
+class_name Game
 
 @export
 var pickup_scene: PackedScene

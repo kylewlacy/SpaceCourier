@@ -59,6 +59,7 @@ _data = [Vector2(0.404639, 0), 0.0, 0.0, 0, 0, Vector2(1, 14.7297), 0.0, 0.0, 0,
 _data = [Vector2(0, 0.558559), 0.0, 0.0, 0, 0, Vector2(0.384021, 0.63964), 0.0, 0.0, 0, 0, Vector2(0.744845, 0.801802), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 
 [node name="Game" type="Node"]
+process_mode = 1
 script = ExtResource( "1_qart5" )
 pickup_scene = ExtResource( "2_iaxst" )
 

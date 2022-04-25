@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqikvegs56uxi"]
+
+[ext_resource type="Theme" uid="uid://cyusk16m2fbev" path="res://ui_theme.tres" id="1_dvoxg"]
+[ext_resource type="Script" path="res://main_menu.gd" id="2_glip5"]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( "1_dvoxg" )
+script = ExtResource( "2_glip5" )
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -376.0
+offset_right = 376.0
+offset_bottom = 283.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 96
+text = "Space Courier"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="StartButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -415.0
+offset_top = -435.0
+offset_right = 415.0
+offset_bottom = -285.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="QuitButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -415.0
+offset_top = -218.0
+offset_right = 415.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Quit
+"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
