@@ -8,6 +8,8 @@ radius = 0.115
 height = 0.509
 
 [node name="Ship" type="RigidDynamicBody3D" groups=["gravity_attraction"]]
+contacts_reported = 5
+contact_monitor = true
 angular_damp_mode = 1
 angular_damp = 3.5
 script = ExtResource( "1_j0n8o" )
@@ -29,3 +31,5 @@ shape = SubResource( "CapsuleShape3D_1mgve" )
 
 [node name="SmokePoint" type="Position3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.295586, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_ship_body_entered"]

@@ -266,4 +266,5 @@ root_node = NodePath("../Earth")
 anims/IntroToStandard = SubResource( "Animation_olby1" )
 anims/RESET = SubResource( "Animation_1udlt" )
 
+[connection signal="crashed_into_planet" from="Ship" to="." method="_on_ship_crashed_into_planet"]
 [connection signal="picked_up" from="InitialPickup" to="." method="_on_initial_pickup_picked_up"]

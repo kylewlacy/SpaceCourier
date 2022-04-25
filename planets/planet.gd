@@ -14,6 +14,7 @@ var radius: float = 1.0:
 		scale.y = new_radius
 		scale.z = new_radius
 
+
 @export
 var material: Material:
 	get:

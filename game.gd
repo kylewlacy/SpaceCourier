@@ -12,6 +12,9 @@ var attached_pickup_followers: Array[PathFollow3D] = []
 
 var score = 0
 
+var fuzzy_distance = 10
+var max_distance = 20
+
 func _ready():
 	$ShipSmoke.emitting = false
 	$ShipSmoke.global_transform.origin = Vector3.ZERO
@@ -42,11 +45,14 @@ func update_ship_curve():
 		var follow = attached_pickup_followers[i]
 		follow.offset = ship_curve_length - (1.0 + (i * 0.5))
 
+func trigger_game_over(cause: GameOver.GameOverCause):
+	game_over.emit(cause, score)
+	$Ship.crashed()
+	$CameraController.enabled = false
+
 func _on_pickup_collided(_pickup, body):
 	if body == $Ship:
-		game_over.emit(GameOver.GameOverCause.CRASHED_BOX, score)
-		$Ship.crashed()
-		$CameraController.enabled = false
+		trigger_game_over(GameOver.GameOverCause.CRASHED_BOX)
 
 
 func _on_pickup_picked_up(pickup, body):
@@ -84,7 +90,6 @@ func get_new_pickup_location() -> Vector3:
 	var location = planet_center + Vector3(distance * sin(rotation), distance * cos(rotation), 0)
 	return location
 
-
 func _on_initial_pickup_picked_up(pickup, body):
 	if body == $Ship:
 		$Ship.complete_intro()
@@ -94,3 +99,6 @@ func _on_initial_pickup_picked_up(pickup, body):
 		pickup.scale = Vector3.ONE
 
 	_on_pickup_picked_up(pickup, body)
+
+func _on_ship_crashed_into_planet(_planet):
+	trigger_game_over(GameOver.GameOverCause.CRASHED_PLANET)

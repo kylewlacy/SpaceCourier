@@ -1,5 +1,7 @@
 extends RigidDynamicBody3D
 
+signal crashed_into_planet(planet: Planet)
+
 @export
 var thrust_force = 2
 
@@ -98,3 +100,18 @@ func complete_intro():
 func crashed():
 	ship_state = ShipState.CRASHED
 	ship_is_thrusting = false
+	angular_damp = 0
+
+# NOTE: This handles planetary collisions. Pickup collisions are handled in `Game`/`Pickup`
+func _on_ship_body_entered(body):
+	match ship_state:
+		ShipState.INTRO:
+			return
+		ShipState.CRASHED:
+			return
+		ShipState.STANDARD:
+			pass
+
+	var planet = body as Planet
+	if planet:
+		crashed_into_planet.emit(planet)
