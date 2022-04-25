@@ -13,6 +13,9 @@ func _ready():
 	$MainMenu.start.connect(start_game)
 	$MainMenu.quit.connect(quit_game)
 
+	$PauseMenu.on_resume.connect(unpause)
+	$PauseMenu.on_quit.connect(quit_game)
+
 func start_game():
 	$MainMenu.queue_free()
 
@@ -24,10 +27,19 @@ func start_game():
 	add_child(game)
 	game_state = GameState.PLAYING
 
-func toggle_pause():
-	var is_currently_paused = get_tree().paused
+func pause():
+	$PauseMenu.visible = true
+	get_tree().paused = true
 
-	get_tree().paused = !is_currently_paused
+func unpause():
+	$PauseMenu.visible = false
+	get_tree().paused = false
+
+func toggle_pause():
+	if get_tree().paused:
+		unpause()
+	else:
+		pause()
 
 func quit_game():
 	get_tree().quit()

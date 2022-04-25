@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://da5s1567nv6p2"]
+[gd_scene load_steps=5 format=3 uid="uid://da5s1567nv6p2"]
 
 [ext_resource type="PackedScene" uid="uid://2ulhdxvq2l1p" path="res://game.tscn" id="1_lw6pi"]
 [ext_resource type="Script" path="res://main.gd" id="1_oti6d"]
 [ext_resource type="PackedScene" uid="uid://dqikvegs56uxi" path="res://main_menu.tscn" id="2_ml2ch"]
+[ext_resource type="PackedScene" uid="uid://bcs1dnexdxvcl" path="res://pause_menu.tscn" id="3_idnlm"]
 
 [node name="Main" type="Node"]
 process_mode = 3
@@ -10,3 +11,6 @@ script = ExtResource( "1_oti6d" )
 game_scene = ExtResource( "1_lw6pi" )
 
 [node name="MainMenu" parent="." instance=ExtResource( "2_ml2ch" )]
+
+[node name="PauseMenu" parent="." instance=ExtResource( "3_idnlm" )]
+visible = false
