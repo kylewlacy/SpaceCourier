@@ -74,6 +74,7 @@ effects = SubResource( "CameraEffects_oycn5" )
 fov = 50.0
 size = 6.41
 script = ExtResource( "4_gdgpo" )
+margin = 0.671
 
 [node name="Sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.603, 8.41744, 9.64028)

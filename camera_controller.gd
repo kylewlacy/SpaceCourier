@@ -5,23 +5,15 @@ var focus: Node3D
 @export
 var speed = 1.0
 
+@export
+var margin = 1.0
+
 func set_focus(new_focus: Node3D):
 	focus = new_focus
 
 func _process(delta):
 	var target_position = calculate_target_position()
 	global_transform.origin = global_transform.origin.lerp(target_position, delta * speed)
-
-func calculate_target_position_orig() -> Vector3:
-	var bounding_box = make_aabb(focus.global_transform.origin, Vector3.ONE)
-	print(bounding_box)
-
-	var new_position = aabb_center(bounding_box)
-	var distance = (bounding_box.size.x / 2) / tan(fov / 2)
-	print(distance)
-	new_position.z -= distance
-
-	return new_position
 
 func calculate_target_position() -> Vector3:
 	var min_pos = focus.global_transform.origin
@@ -35,8 +27,8 @@ func calculate_target_position() -> Vector3:
 			continue
 
 		var node_pos = node3d.global_transform.origin
-		min_pos = Vector3(min(min_pos.x, node_pos.x), min(min_pos.y, node_pos.y), min(min_pos.z, node_pos.z))
-		max_pos = Vector3(max(max_pos.x, node_pos.x), max(max_pos.y, node_pos.y), max(max_pos.z, node_pos.z))
+		min_pos = Vector3(min(min_pos.x, node_pos.x - margin), min(min_pos.y, node_pos.y - margin), min(min_pos.z, node_pos.z - margin))
+		max_pos = Vector3(max(max_pos.x, node_pos.x + margin), max(max_pos.y, node_pos.y + margin), max(max_pos.z, node_pos.z + margin))
 
 	var bounding_box = AABB(min_pos, max_pos - min_pos)
 
