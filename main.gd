@@ -3,9 +3,6 @@ extends Node
 @export
 var pickup_scene: PackedScene
 
-var enable_debug_draw = true
-var ship_curve_debug_mesh: ImmediateMesh
-
 var attached_pickup_followers: Array[PathFollow3D] = []
 
 func _ready():
@@ -16,12 +13,6 @@ func _ready():
 	$CameraController.set_focus($Ship)
 
 	spawn_new_pickup()
-
-	if enable_debug_draw:
-		ship_curve_debug_mesh = ImmediateMesh.new()
-		var ship_curve_debug_mesh_instance = MeshInstance3D.new()
-		ship_curve_debug_mesh_instance.mesh = ship_curve_debug_mesh
-		add_child(ship_curve_debug_mesh_instance)
 
 func _process(_delta):
 	var smoke_emission_point = $Ship.get_smoke_position()
@@ -39,13 +30,6 @@ func _physics_process(_delta):
 	for i in range(attached_pickup_followers.size()):
 		var follow = attached_pickup_followers[i]
 		follow.offset = ship_curve_length - (1.0 + (i * 0.5))
-
-	if ship_curve_debug_mesh:
-		ship_curve_debug_mesh.clear_surfaces()
-		ship_curve_debug_mesh.surface_begin(Mesh.PRIMITIVE_POINTS)
-		for i in range(ship_curve.get_point_count()):
-			ship_curve_debug_mesh.surface_add_vertex(ship_curve.get_point_position(i))
-		ship_curve_debug_mesh.surface_end()
 
 func _on_pickup_collided(_pickup, body):
 	if body == $Ship:
