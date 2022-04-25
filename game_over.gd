@@ -14,7 +14,7 @@ func trigger_game_over(cause: GameOverCause, score: int):
 
 	match cause:
 		GameOverCause.CRASHED_BOX:
-			$GameOverMessage.text = "You crashed into your cargo."
+			$GameOverMessage.text = "You destroyed your cargo."
 		GameOverCause.CRASHED_PLANET:
 			$GameOverMessage.text = "You crashed into a celestial body."
 		GameOverCause.LOST_SIGNAL:

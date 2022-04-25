@@ -45,6 +45,8 @@ func update_ship_curve():
 func _on_pickup_collided(_pickup, body):
 	if body == $Ship:
 		game_over.emit(GameOver.GameOverCause.CRASHED_BOX, score)
+		$Ship.crashed()
+		$CameraController.enabled = false
 
 
 func _on_pickup_picked_up(pickup, body):

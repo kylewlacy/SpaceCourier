@@ -11,7 +11,7 @@ var rotation_force = 25 * PI / 360
 
 var ship_is_thrusting: bool = false
 
-enum ShipState {INTRO, STANDARD}
+enum ShipState {INTRO, STANDARD, CRASHED}
 
 var ship_state = ShipState.INTRO
 
@@ -26,9 +26,14 @@ var intro_thrust_force = 0
 var intro_lock_remaining = intro_lock_duration
 
 func _physics_process(delta):
-	if ship_state == ShipState.INTRO:
-		physics_process_intro(delta)
-		return
+	match ship_state:
+		ShipState.INTRO:
+			physics_process_intro(delta)
+			return
+		ShipState.CRASHED:
+			return
+		ShipState.STANDARD:
+			pass
 
 	if Input.is_action_pressed("thrust"):
 		apply_central_force(Vector3(0, thrust_force, 0) * quaternion.inverse())
@@ -64,8 +69,14 @@ func physics_process_intro(delta: float):
 		intro_thrust_force = min(thrust_force, intro_thrust_force)
 
 func _on_gravity_attraction(attractor: GravityAttractor):
-	if ship_state == ShipState.INTRO:
-		return
+	match ship_state:
+		ShipState.INTRO:
+			return
+		ShipState.CRASHED:
+			return
+		ShipState.STANDARD:
+			pass
+
 	var vector = attractor.global_transform.origin - global_transform.origin
 	var distance = vector.length()
 	var gravity_force = vector.normalized() * (attractor.gravity_mass / pow(distance, gravity_pow))
@@ -83,3 +94,7 @@ func is_thrusting() -> bool:
 
 func complete_intro():
 	ship_state = ShipState.STANDARD
+
+func crashed():
+	ship_state = ShipState.CRASHED
+	ship_is_thrusting = false
