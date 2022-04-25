@@ -12,8 +12,10 @@ var attached_pickup_followers: Array[PathFollow3D] = []
 
 var score = 0
 
-var fuzzy_distance = 10
-var max_distance = 20
+var fuzzy_distance = 9
+var max_distance = 15
+
+var game_over_triggered = false
 
 func _ready():
 	$ShipSmoke.emitting = false
@@ -35,6 +37,9 @@ func _process(_delta):
 func _physics_process(_delta):
 	update_ship_curve()
 
+	if get_fuzziness() >= 1.0:
+		trigger_game_over(GameOver.GameOverCause.LOST_SIGNAL)
+
 # TODO: This function slows down significantly after collecting lots of pickups
 func update_ship_curve():
 	var ship_curve = $ShipPath.curve
@@ -46,9 +51,13 @@ func update_ship_curve():
 		follow.offset = ship_curve_length - (1.0 + (i * 0.5))
 
 func trigger_game_over(cause: GameOver.GameOverCause):
+	if game_over_triggered:
+		return
+
 	game_over.emit(cause, score)
 	$Ship.crashed()
 	$CameraController.enabled = false
+	game_over_triggered = true
 
 func _on_pickup_collided(_pickup, body):
 	if body == $Ship:
@@ -102,3 +111,13 @@ func _on_initial_pickup_picked_up(pickup, body):
 
 func _on_ship_crashed_into_planet(_planet):
 	trigger_game_over(GameOver.GameOverCause.CRASHED_PLANET)
+
+func get_fuzziness() -> float:
+	var distance_from_origin = ($Ship.global_transform.origin - $FuzzinessOrigin.global_transform.origin).length()
+	if distance_from_origin >= max_distance:
+		return 1.0
+	elif distance_from_origin <= fuzzy_distance:
+		return 0.0
+	else:
+		return (distance_from_origin - fuzzy_distance) / (max_distance - fuzzy_distance)
+

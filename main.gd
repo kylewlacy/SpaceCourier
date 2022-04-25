@@ -66,6 +66,23 @@ func toggle_pause():
 func quit_game():
 	get_tree().quit()
 
+func _process(_delta):
+	match game_state:
+		GameState.PLAYING:
+			if game:
+				set_fuzziness(game.get_fuzziness())
+			else:
+				set_fuzziness(0)
+		GameState.MAIN_MENU:
+			set_fuzziness(0)
+		GameState.ENDED:
+			# Keep fuzziness during game over screen
+			pass
+
+func set_fuzziness(fuzziness: float):
+	$Fuzziness.visible = fuzziness > 0
+	$Fuzziness/FuzzRect.material.set_shader_param("alpha", fuzziness)
+
 func _unhandled_input(event: InputEvent):
 	if event.is_action_released("pause") && game_state == GameState.PLAYING:
 		toggle_pause()

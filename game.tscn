@@ -266,5 +266,8 @@ root_node = NodePath("../Earth")
 anims/IntroToStandard = SubResource( "Animation_olby1" )
 anims/RESET = SubResource( "Animation_1udlt" )
 
+[node name="FuzzinessOrigin" type="Position3D" parent="."]
+transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 1.21072e-08, -7.45058e-09, -2.23517e-08, 1, 2.42337, -1.35616, -2.38419e-07)
+
 [connection signal="crashed_into_planet" from="Ship" to="." method="_on_ship_crashed_into_planet"]
 [connection signal="picked_up" from="InitialPickup" to="." method="_on_initial_pickup_picked_up"]
