@@ -3,6 +3,9 @@ extends Node3D
 class_name Planet
 
 @export
+var rotation_speed = 0.15
+
+@export
 var radius: float = 1.0:
 	get:
 		return scale.x
@@ -28,3 +31,8 @@ var mass: float = 1.0:
 
 		$GravityAttractor.gravity_mass = new_mass
 
+func _process(_delta):
+	if Engine.is_editor_hint():
+		return
+
+	rotate_y(_delta * rotation_speed)
