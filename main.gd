@@ -3,6 +3,8 @@ extends Node
 @export
 var pickup_scene: PackedScene
 
+var next_pickup_hemisphere = 0
+
 var attached_pickup_followers: Array[PathFollow3D] = []
 
 func _ready():
@@ -57,6 +59,9 @@ func spawn_new_pickup():
 	$Pickups.add_child(pickup)
 
 func get_new_pickup_location() -> Vector3:
+	var pickup_hemisphere_offset = next_pickup_hemisphere * PI
+	next_pickup_hemisphere = (next_pickup_hemisphere + 1) % 2
+
 	var planets = get_tree().get_nodes_in_group("planets")
 	var planet_index = randi_range(0, planets.size() - 1)
 	var planet := planets[planet_index] as Planet
@@ -64,7 +69,7 @@ func get_new_pickup_location() -> Vector3:
 		push_warning("Node in group 'planets' was not type Planet")
 		return Vector3.ZERO
 	var planet_center = planet.global_transform.origin
-	var rotation = randf_range(0, 2 * PI)
+	var rotation = pickup_hemisphere_offset + randf_range(-3 * PI / 8, 3 * PI / 8)
 	var distance_from_surface = randf_range(0.5, 0.75)
 	var distance = distance_from_surface + planet.radius
 	var location = planet_center + Vector3(distance * sin(rotation), distance * cos(rotation), 0)
