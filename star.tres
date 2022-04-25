@@ -1,4 +1,4 @@
-[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://e63raa5cl8a4"]
+[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://d3c0a7iso6h4f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qelfv"]
 emission_enabled = true
