@@ -59,7 +59,7 @@ func get_inverse_aspect_ratio() -> float:
 	return viewport_rect.size.y / viewport_rect.size.x
 
 func make_aabb(center: Vector3, size: Vector3) -> AABB:
-	return AABB(center - (size / 2), center + (size / 2))
+	return AABB(center - (size / 2), size)
 
 func aabb_center(aabb: AABB) -> Vector3:
 	return aabb.position + (aabb.size / 2)

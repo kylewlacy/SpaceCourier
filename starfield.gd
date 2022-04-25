@@ -63,6 +63,6 @@ func area_aabb(area: CollisionShape3D) -> AABB:
 
 	return make_aabb(area.position, box.size)
 
-# FIXME: This is different from `make_aabb` in `camera_controller.gd`
+# FIXME: This is a duplicate of `make_aabb` in `camera_controller.gd`
 func make_aabb(center: Vector3, size: Vector3) -> AABB:
 	return AABB(center - (size / 2), size)
