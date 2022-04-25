@@ -15,7 +15,7 @@ func _ready():
 
 	$CameraController.set_focus($Ship)
 
-	spawn_new_pickup()
+	$Earth.rotation_speed = 0
 
 func _process(_delta):
 	var smoke_emission_point = $Ship.get_smoke_position()
@@ -76,3 +76,13 @@ func get_new_pickup_location() -> Vector3:
 	var location = planet_center + Vector3(distance * sin(rotation), distance * cos(rotation), 0)
 	return location
 
+
+func _on_initial_pickup_picked_up(pickup, body):
+	if body == $Ship:
+		$Ship.complete_intro()
+		$Earth.rotation_speed = 0.15
+		$CameraController.enabled = true
+		$EarthAnimation.play("IntroToStandard")
+		pickup.scale = Vector3.ONE
+
+	_on_pickup_picked_up(pickup, body)

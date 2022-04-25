@@ -3,6 +3,9 @@ extends Camera3D
 var focus: Node3D
 
 @export
+var enabled = true
+
+@export
 var speed = 1.0
 
 @export
@@ -12,6 +15,8 @@ func set_focus(new_focus: Node3D):
 	focus = new_focus
 
 func _process(delta):
+	if !enabled:
+		return
 	var target_position = calculate_target_position()
 	global_transform.origin = global_transform.origin.lerp(target_position, delta * speed)
 
