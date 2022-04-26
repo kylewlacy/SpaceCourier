@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b55w2w63qqsjm"
+path="res://.godot/imported/audio_mangler_crashes_metal_glass_01_239.mp3-b77bdf3e7395e031afee5587579ebcbb.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/big/audio_mangler_crashes_metal_glass_01_239.mp3"
+dest_files=["res://.godot/imported/audio_mangler_crashes_metal_glass_01_239.mp3-b77bdf3e7395e031afee5587579ebcbb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

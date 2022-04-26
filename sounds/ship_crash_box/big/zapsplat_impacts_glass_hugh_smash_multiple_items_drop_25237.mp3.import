@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cucwbm1jcrkkj"
+path="res://.godot/imported/zapsplat_impacts_glass_hugh_smash_multiple_items_drop_25237.mp3-3cdef2f1e93747325c529dfa6653014f.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/big/zapsplat_impacts_glass_hugh_smash_multiple_items_drop_25237.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_glass_hugh_smash_multiple_items_drop_25237.mp3-3cdef2f1e93747325c529dfa6653014f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

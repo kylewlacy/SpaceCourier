@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://leb31rry06jc"
+path="res://.godot/imported/zapsplat_impacts_metal_light_hit_chime_resonate_004_73691.mp3-664825d621dfa65ea8eabd75166fb605.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_planet/heavy/zapsplat_impacts_metal_light_hit_chime_resonate_004_73691.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_metal_light_hit_chime_resonate_004_73691.mp3-664825d621dfa65ea8eabd75166fb605.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

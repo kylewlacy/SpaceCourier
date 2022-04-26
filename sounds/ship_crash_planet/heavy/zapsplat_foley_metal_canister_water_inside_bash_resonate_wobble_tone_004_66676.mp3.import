@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bc3u3rsym3toq"
+path="res://.godot/imported/zapsplat_foley_metal_canister_water_inside_bash_resonate_wobble_tone_004_66676.mp3-667a5ca0802f74039319fd026b7e1948.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_planet/heavy/zapsplat_foley_metal_canister_water_inside_bash_resonate_wobble_tone_004_66676.mp3"
+dest_files=["res://.godot/imported/zapsplat_foley_metal_canister_water_inside_bash_resonate_wobble_tone_004_66676.mp3-667a5ca0802f74039319fd026b7e1948.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dg6s62h6ljwvf"
+path="res://.godot/imported/skyes_audio_Glass_Bottle_Break_Smash_Long_Crisp_Bright_Individual_Shards_at_the_End_027.mp3-e3cc84471ab6aea8a72b87a8c487964e.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/small/skyes_audio_Glass_Bottle_Break_Smash_Long_Crisp_Bright_Individual_Shards_at_the_End_027.mp3"
+dest_files=["res://.godot/imported/skyes_audio_Glass_Bottle_Break_Smash_Long_Crisp_Bright_Individual_Shards_at_the_End_027.mp3-e3cc84471ab6aea8a72b87a8c487964e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

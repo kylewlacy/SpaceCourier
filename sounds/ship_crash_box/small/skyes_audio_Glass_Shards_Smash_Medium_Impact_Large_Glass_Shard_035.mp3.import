@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnqkhddf6dae2"
+path="res://.godot/imported/skyes_audio_Glass_Shards_Smash_Medium_Impact_Large_Glass_Shard_035.mp3-196fee3268439fc83018461d0b7ea7d0.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/small/skyes_audio_Glass_Shards_Smash_Medium_Impact_Large_Glass_Shard_035.mp3"
+dest_files=["res://.godot/imported/skyes_audio_Glass_Shards_Smash_Medium_Impact_Large_Glass_Shard_035.mp3-196fee3268439fc83018461d0b7ea7d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

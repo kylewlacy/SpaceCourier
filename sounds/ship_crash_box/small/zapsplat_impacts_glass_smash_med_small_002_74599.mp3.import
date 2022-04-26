@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bpt1hfn0qrry6"
+path="res://.godot/imported/zapsplat_impacts_glass_smash_med_small_002_74599.mp3-a417432994e44ce97f6752b060e29735.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_smash_med_small_002_74599.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_glass_smash_med_small_002_74599.mp3-a417432994e44ce97f6752b060e29735.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

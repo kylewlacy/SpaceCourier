@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dj5t5evuld1lj"
+path="res://.godot/imported/zapsplat_impacts_metal_bowl_water_hit_metal_spoon_vibrato_66395.mp3-6107aac0c4ea9bb5974308c5e99dbff4.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_planet/medium/zapsplat_impacts_metal_bowl_water_hit_metal_spoon_vibrato_66395.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_metal_bowl_water_hit_metal_spoon_vibrato_66395.mp3-6107aac0c4ea9bb5974308c5e99dbff4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

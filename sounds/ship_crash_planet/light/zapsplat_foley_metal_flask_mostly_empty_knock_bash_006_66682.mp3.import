@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwrv4dqltmcay"
+path="res://.godot/imported/zapsplat_foley_metal_flask_mostly_empty_knock_bash_006_66682.mp3-ff46336709949e9e75773dbd9b02c781.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_planet/light/zapsplat_foley_metal_flask_mostly_empty_knock_bash_006_66682.mp3"
+dest_files=["res://.godot/imported/zapsplat_foley_metal_flask_mostly_empty_knock_bash_006_66682.mp3-ff46336709949e9e75773dbd9b02c781.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

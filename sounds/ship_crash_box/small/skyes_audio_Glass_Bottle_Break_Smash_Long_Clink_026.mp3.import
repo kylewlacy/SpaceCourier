@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsfqt2kf8ud5c"
+path="res://.godot/imported/skyes_audio_Glass_Bottle_Break_Smash_Long_Clink_026.mp3-34c45b3e415a485d8b4711a1e588efa9.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/small/skyes_audio_Glass_Bottle_Break_Smash_Long_Clink_026.mp3"
+dest_files=["res://.godot/imported/skyes_audio_Glass_Bottle_Break_Smash_Long_Clink_026.mp3-34c45b3e415a485d8b4711a1e588efa9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmt8sv8qafe6o"
+path="res://.godot/imported/zapsplat_impacts_metal_hit_thin_ping_002_71491.mp3-e4dcc4919579fb4efcd1b5a2be11309c.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_planet/light/zapsplat_impacts_metal_hit_thin_ping_002_71491.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_metal_hit_thin_ping_002_71491.mp3-e4dcc4919579fb4efcd1b5a2be11309c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cql3cjxrap26w"
+path="res://.godot/imported/zapsplat_foley_cardboard_box_medium_rectangular_set_down_or_drop_lightly_concrete_005_80855.mp3-f33a273618867d6d3da6cafa8f5ee65e.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/box/zapsplat_foley_cardboard_box_medium_rectangular_set_down_or_drop_lightly_concrete_005_80855.mp3"
+dest_files=["res://.godot/imported/zapsplat_foley_cardboard_box_medium_rectangular_set_down_or_drop_lightly_concrete_005_80855.mp3-f33a273618867d6d3da6cafa8f5ee65e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

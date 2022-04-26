@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6pfyd11gjgtm"
+path="res://.godot/imported/soundsnap_442239_small_glass_debris_3.mp3-ec10d4ca216e80d6d8c13e0cd33196ed.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/big/soundsnap_442239_small_glass_debris_3.mp3"
+dest_files=["res://.godot/imported/soundsnap_442239_small_glass_debris_3.mp3-ec10d4ca216e80d6d8c13e0cd33196ed.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

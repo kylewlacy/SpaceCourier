@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://biqu1dsem4y81"
+path="res://.godot/imported/zapsplat_impacts_glass_small_object_smash_break_hit_on_cardboard_002_29023.mp3-ee3bdd28dbbb997db904d2b7cf5d679f.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_small_object_smash_break_hit_on_cardboard_002_29023.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_glass_small_object_smash_break_hit_on_cardboard_002_29023.mp3-ee3bdd28dbbb997db904d2b7cf5d679f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

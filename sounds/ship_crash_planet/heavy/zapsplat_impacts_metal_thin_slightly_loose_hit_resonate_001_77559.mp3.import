@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cvnjog1c1btac"
+path="res://.godot/imported/zapsplat_impacts_metal_thin_slightly_loose_hit_resonate_001_77559.mp3-84980f302cd65477ce582d15f3399350.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_planet/heavy/zapsplat_impacts_metal_thin_slightly_loose_hit_resonate_001_77559.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_metal_thin_slightly_loose_hit_resonate_001_77559.mp3-84980f302cd65477ce582d15f3399350.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

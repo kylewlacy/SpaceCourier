@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxp0n5kjdtcn3"
+path="res://.godot/imported/zapsplat_impacts_glass_soccer_ball_hit_bottle_knock_over_smash_ground_48212.mp3-7a3412ec4aa829c7864348dab92b30aa.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_soccer_ball_hit_bottle_knock_over_smash_ground_48212.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_glass_soccer_ball_hit_bottle_knock_over_smash_ground_48212.mp3-7a3412ec4aa829c7864348dab92b30aa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

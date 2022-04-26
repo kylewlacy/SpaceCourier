@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c00gjcwbhiojn"
+path="res://.godot/imported/skyes_audio_Glass_Bottle_Break_Smash_Long_Messy_Bright_028.mp3-835c678e58fd3e8a8a9ba966d2af64eb.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/small/skyes_audio_Glass_Bottle_Break_Smash_Long_Messy_Bright_028.mp3"
+dest_files=["res://.godot/imported/skyes_audio_Glass_Bottle_Break_Smash_Long_Messy_Bright_028.mp3-835c678e58fd3e8a8a9ba966d2af64eb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

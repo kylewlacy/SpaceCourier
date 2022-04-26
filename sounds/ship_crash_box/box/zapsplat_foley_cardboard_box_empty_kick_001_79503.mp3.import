@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://carivrqc0hrhl"
+path="res://.godot/imported/zapsplat_foley_cardboard_box_empty_kick_001_79503.mp3-5975889492b19a3cf99aea742157bc97.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/box/zapsplat_foley_cardboard_box_empty_kick_001_79503.mp3"
+dest_files=["res://.godot/imported/zapsplat_foley_cardboard_box_empty_kick_001_79503.mp3-5975889492b19a3cf99aea742157bc97.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

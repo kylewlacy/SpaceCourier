@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://2ulhdxvq2l1p"]
+[gd_scene load_steps=42 format=3 uid="uid://2ulhdxvq2l1p"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_qart5"]
 [ext_resource type="PackedScene" uid="uid://ck16vkvk68bm7" path="res://pickups/pickup.tscn" id="2_iaxst"]
@@ -9,6 +9,24 @@
 [ext_resource type="Material" uid="uid://dtv2ncb4r8xvs" path="res://planets/moon/moon_material.tres" id="7_ucscd"]
 [ext_resource type="Script" path="res://starfield.gd" id="8_ut6kx"]
 [ext_resource type="SphereMesh" uid="uid://d3c0a7iso6h4f" path="res://star.tres" id="9_0wgbm"]
+[ext_resource type="Script" path="res://ship_crash_sound_controller.gd" id="10_bxt63"]
+[ext_resource type="AudioStream" uid="uid://dqslebhk438r0" path="res://sounds/ship_crash_planet/medium/zapsplat_impacts_metal_pot_pan_hit_empty_clang_004_76757.mp3" id="11_0pdrr"]
+[ext_resource type="AudioStream" uid="uid://c3tdgwlamhdtj" path="res://sounds/ship_crash_planet/medium/zapsplat_impacts_metal_thin_slightly_loose_hit_edge_resonate_001_77556.mp3" id="11_1moc7"]
+[ext_resource type="AudioStream" uid="uid://bcyshof82hyxv" path="res://sounds/ship_crash_planet/light/zapsplat_impacts_metal_pole_hit_clang_005_75294.mp3" id="11_2vuyw"]
+[ext_resource type="AudioStream" uid="uid://cwrv4dqltmcay" path="res://sounds/ship_crash_planet/light/zapsplat_foley_metal_flask_mostly_empty_knock_bash_006_66682.mp3" id="11_50tkd"]
+[ext_resource type="AudioStream" uid="uid://bc3u3rsym3toq" path="res://sounds/ship_crash_planet/heavy/zapsplat_foley_metal_canister_water_inside_bash_resonate_wobble_tone_004_66676.mp3" id="11_cdmte"]
+[ext_resource type="AudioStream" uid="uid://dnjkqu5q8dae5" path="res://sounds/ship_crash_planet/heavy/zapsplat_impacts_metal_panel_loose_hit_hard_002_80562.mp3" id="11_dii6p"]
+[ext_resource type="AudioStream" uid="uid://ci3oxl8aqymnl" path="res://sounds/ship_crash_planet/light/zapsplat_impacts_metal_thin_hit_slight_rattle_tinny_002_73936.mp3" id="11_i6wpp"]
+[ext_resource type="AudioStream" uid="uid://cfcxevg3j0bqb" path="res://sounds/ship_crash_planet/heavy/zapsplat_impacts_metal_light_hit_chime_resonate_001_73688.mp3" id="11_j0a70"]
+[ext_resource type="AudioStream" uid="uid://ceodhrylbri8l" path="res://sounds/ship_crash_planet/heavy/zapsplat_impacts_metal_light_hit_chime_resonate_007_73694.mp3" id="11_jx6n1"]
+[ext_resource type="AudioStream" uid="uid://dj5t5evuld1lj" path="res://sounds/ship_crash_planet/medium/zapsplat_impacts_metal_bowl_water_hit_metal_spoon_vibrato_66395.mp3" id="11_mm3o4"]
+[ext_resource type="AudioStream" uid="uid://b6r5mrgf3662r" path="res://sounds/ship_crash_planet/light/zapsplat_impacts_metal_tap_hit_tinny_002_73928.mp3" id="11_n4xew"]
+[ext_resource type="AudioStream" uid="uid://cvnjog1c1btac" path="res://sounds/ship_crash_planet/heavy/zapsplat_impacts_metal_thin_slightly_loose_hit_resonate_001_77559.mp3" id="11_no84k"]
+[ext_resource type="AudioStream" uid="uid://dr88f5mf07mr0" path="res://sounds/ship_crash_planet/medium/zapsplat_impacts_metal_thin_slightly_loose_hit_edge_resonate_002_77557.mp3" id="11_sn2lt"]
+[ext_resource type="AudioStream" uid="uid://cuk0s4v4t6jgu" path="res://sounds/ship_crash_planet/medium/zapsplat_impacts_metal_pot_pan_hit_empty_clang_002_76755.mp3" id="11_u7js6"]
+[ext_resource type="AudioStream" uid="uid://dgyjg6q4exqgy" path="res://sounds/ship_crash_planet/medium/zapsplat_impacts_metal_thin_slightly_loose_hit_edge_resonate_003_77558.mp3" id="11_unq8n"]
+[ext_resource type="AudioStream" uid="uid://leb31rry06jc" path="res://sounds/ship_crash_planet/heavy/zapsplat_impacts_metal_light_hit_chime_resonate_004_73691.mp3" id="11_v7d4q"]
+[ext_resource type="AudioStream" uid="uid://cmt8sv8qafe6o" path="res://sounds/ship_crash_planet/light/zapsplat_impacts_metal_hit_thin_ping_002_71491.mp3" id="11_vudng"]
 
 [sub_resource type="CameraEffects" id="CameraEffects_oycn5"]
 override_exposure_enabled = true
@@ -268,6 +286,13 @@ anims/RESET = SubResource( "Animation_1udlt" )
 
 [node name="FuzzinessOrigin" type="Position3D" parent="."]
 transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 1.21072e-08, -7.45058e-09, -2.23517e-08, 1, 2.42337, -1.35616, -2.38419e-07)
+
+[node name="ShipCrashSoundController" type="AudioStreamPlayer" parent="."]
+script = ExtResource( "10_bxt63" )
+light_sounds = [ExtResource( "11_50tkd" ), ExtResource( "11_vudng" ), ExtResource( "11_2vuyw" ), ExtResource( "11_n4xew" ), ExtResource( "11_i6wpp" )]
+mid_threshold = 0.7
+mid_sounds = [ExtResource( "11_mm3o4" ), ExtResource( "11_u7js6" ), ExtResource( "11_0pdrr" ), ExtResource( "11_1moc7" ), ExtResource( "11_sn2lt" ), ExtResource( "11_unq8n" )]
+heavy_sounds = [ExtResource( "11_cdmte" ), ExtResource( "11_j0a70" ), ExtResource( "11_v7d4q" ), ExtResource( "11_jx6n1" ), ExtResource( "11_dii6p" ), ExtResource( "11_no84k" )]
 
 [connection signal="crashed_into_planet" from="Ship" to="." method="_on_ship_crashed_into_planet"]
 [connection signal="picked_up" from="InitialPickup" to="." method="_on_initial_pickup_picked_up"]

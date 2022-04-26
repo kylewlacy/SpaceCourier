@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://w4utqa1xeyh7"
+path="res://.godot/imported/zapsplat_impacts_glass_bottle_shard_hit_junk_in_plastic_bin_smash_003_27797.mp3-203b7b3be4f398d701611927ca29e54c.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_bottle_shard_hit_junk_in_plastic_bin_smash_003_27797.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_glass_bottle_shard_hit_junk_in_plastic_bin_smash_003_27797.mp3-203b7b3be4f398d701611927ca29e54c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

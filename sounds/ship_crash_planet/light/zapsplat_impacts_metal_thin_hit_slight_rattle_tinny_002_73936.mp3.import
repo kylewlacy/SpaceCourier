@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ci3oxl8aqymnl"
+path="res://.godot/imported/zapsplat_impacts_metal_thin_hit_slight_rattle_tinny_002_73936.mp3-c8d43afafa00ec37754a57079c0869f5.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_planet/light/zapsplat_impacts_metal_thin_hit_slight_rattle_tinny_002_73936.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_metal_thin_hit_slight_rattle_tinny_002_73936.mp3-c8d43afafa00ec37754a57079c0869f5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

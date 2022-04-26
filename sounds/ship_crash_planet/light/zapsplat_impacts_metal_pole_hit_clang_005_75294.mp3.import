@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcyshof82hyxv"
+path="res://.godot/imported/zapsplat_impacts_metal_pole_hit_clang_005_75294.mp3-2ed680bf4e9f671d4cd84bab190597cf.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_planet/light/zapsplat_impacts_metal_pole_hit_clang_005_75294.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_metal_pole_hit_clang_005_75294.mp3-2ed680bf4e9f671d4cd84bab190597cf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

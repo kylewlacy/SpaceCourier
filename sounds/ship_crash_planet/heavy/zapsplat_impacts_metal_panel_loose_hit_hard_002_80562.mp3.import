@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnjkqu5q8dae5"
+path="res://.godot/imported/zapsplat_impacts_metal_panel_loose_hit_hard_002_80562.mp3-9aba73887820c37cd20549a4fd34ed3b.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_planet/heavy/zapsplat_impacts_metal_panel_loose_hit_hard_002_80562.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_metal_panel_loose_hit_hard_002_80562.mp3-9aba73887820c37cd20549a4fd34ed3b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

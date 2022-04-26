@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqslebhk438r0"
+path="res://.godot/imported/zapsplat_impacts_metal_pot_pan_hit_empty_clang_004_76757.mp3-14fc2e8bd6c3046753aa0f65feabbca2.mp3str"
+
+[deps]
+
+source_file="res://sounds/ship_crash_planet/medium/zapsplat_impacts_metal_pot_pan_hit_empty_clang_004_76757.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_metal_pot_pan_hit_empty_clang_004_76757.mp3-14fc2e8bd6c3046753aa0f65feabbca2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
