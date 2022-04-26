@@ -77,6 +77,7 @@ func _on_pickup_collided(_pickup, body):
 func _on_pickup_picked_up(pickup, body):
 	if body == $Ship:
 		score += 1
+		$BoxCollectSound.play()
 
 		var follower = PathFollow3D.new()
 		$ShipPath.add_child(follower)

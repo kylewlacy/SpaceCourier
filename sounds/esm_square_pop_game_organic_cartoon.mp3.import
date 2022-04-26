@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://djd54pjkskp7f"
+path="res://.godot/imported/esm_square_pop_game_organic_cartoon.mp3-fe1c025fcb46dcd90062c826c2fd00c9.mp3str"
+
+[deps]
+
+source_file="res://sounds/esm_square_pop_game_organic_cartoon.mp3"
+dest_files=["res://.godot/imported/esm_square_pop_game_organic_cartoon.mp3-fe1c025fcb46dcd90062c826c2fd00c9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0

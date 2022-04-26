@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://2ulhdxvq2l1p"]
+[gd_scene load_steps=69 format=3 uid="uid://2ulhdxvq2l1p"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_qart5"]
 [ext_resource type="PackedScene" uid="uid://ck16vkvk68bm7" path="res://pickups/pickup.tscn" id="2_iaxst"]
@@ -52,6 +52,7 @@
 [ext_resource type="AudioStream" uid="uid://w4utqa1xeyh7" path="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_bottle_shard_hit_junk_in_plastic_bin_smash_003_27797.mp3" id="28_wx6rn"]
 [ext_resource type="AudioStream" uid="uid://cql3cjxrap26w" path="res://sounds/ship_crash_box/box/zapsplat_foley_cardboard_box_medium_rectangular_set_down_or_drop_lightly_concrete_005_80855.mp3" id="28_x07j7"]
 [ext_resource type="AudioStream" uid="uid://by8vwhbwq8rt8" path="res://sounds/gas_burner_loop.mp3" id="52_ccprc"]
+[ext_resource type="AudioStream" uid="uid://djd54pjkskp7f" path="res://sounds/esm_square_pop_game_organic_cartoon.mp3" id="53_o2a1b"]
 
 [sub_resource type="CameraEffects" id="CameraEffects_oycn5"]
 override_exposure_enabled = true
@@ -342,6 +343,9 @@ stream = SubResource( "AudioStreamRandomizer_4q4jd" )
 stream = ExtResource( "52_ccprc" )
 volume_db = -10.0
 pitch_scale = 1.94
+
+[node name="BoxCollectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( "53_o2a1b" )
 
 [connection signal="crashed_into_planet" from="Ship" to="." method="_on_ship_crashed_into_planet"]
 [connection signal="picked_up" from="InitialPickup" to="." method="_on_initial_pickup_picked_up"]
