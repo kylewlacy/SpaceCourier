@@ -37,7 +37,7 @@ func _process(delta):
 	if $Ship.is_thrusting():
 		if not $ShipThrustSound.playing:
 			$ShipThrustSound.play()
-		$ShipThrustSound.volume_db = clamp($ShipThrustSound.volume_db + (300 * delta), -80, -10)
+		$ShipThrustSound.volume_db = clamp($ShipThrustSound.volume_db + (200 * delta), -30, -10)
 	else:
 		$ShipThrustSound.volume_db = clamp($ShipThrustSound.volume_db - (300 * delta), -80, -10)
 		if $ShipThrustSound.volume_db <= -80 && $ShipThrustSound.playing:
@@ -70,7 +70,7 @@ func trigger_game_over(cause: GameOver.GameOverCause):
 	game_over_triggered = true
 
 func _on_pickup_collided(_pickup, body):
-	if body == $Ship:
+	if body == $Ship && not $Ship.crashed():
 		trigger_game_over(GameOver.GameOverCause.CRASHED_BOX)
 
 
