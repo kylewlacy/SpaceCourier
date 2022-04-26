@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmvrjr0dlxx3"]
+[gd_scene load_steps=11 format=3 uid="uid://bmvrjr0dlxx3"]
 
 [ext_resource type="Theme" uid="uid://cyusk16m2fbev" path="res://ui_theme.tres" id="1_gyh3o"]
 [ext_resource type="Script" path="res://game_over.gd" id="2_jnft4"]
+[ext_resource type="AudioStream" uid="uid://dpp1mvcr5vqec" path="res://sounds/game_over_music/full_and_if_a_boat.mp3" id="3_4rk2i"]
+[ext_resource type="AudioStream" uid="uid://cs6slp4sh7hgs" path="res://sounds/game_over_music/asunder.mp3" id="3_htcjs"]
+[ext_resource type="AudioStream" uid="uid://r5rrc1pooa6m" path="res://sounds/game_over_music/music_zapsplat_missing_the_time_we_had.mp3" id="4_yor7e"]
+[ext_resource type="AudioStream" uid="uid://dw0u3o82q74p1" path="res://sounds/game_over_music/oceans_at_rest.mp3" id="5_nt6qe"]
+[ext_resource type="AudioStream" uid="uid://tcxqtcgn508s" path="res://sounds/game_over_music/sound_in_calling.mp3" id="6_0bsfe"]
 
 [sub_resource type="Animation" id="Animation_js46j"]
 resource_name = "GameOver"
-length = 4.0
+length = 7.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -13,7 +18,7 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.5, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.498039)]
@@ -25,7 +30,7 @@ tracks/1/path = NodePath("GameOverTitle:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 2.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -37,7 +42,7 @@ tracks/2/path = NodePath("GameOverMessage:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.3),
+"times": PackedFloat32Array(0, 4.55),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -49,7 +54,7 @@ tracks/3/path = NodePath("ScoreMessage:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 4),
+"times": PackedFloat32Array(0, 6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -61,7 +66,7 @@ tracks/4/path = NodePath("PlayAgain:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 4),
+"times": PackedFloat32Array(0, 6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -73,10 +78,24 @@ tracks/5/path = NodePath("Quit:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 4),
+"times": PackedFloat32Array(0, 6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameOverMusic")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_whmcx"]
@@ -153,6 +172,21 @@ tracks/5/keys = {
 "update": 0,
 "values": [true]
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hn0pe"]
+streams_count = 5
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource( "3_htcjs" )
+stream_0/weight = 1.0
+stream_1/stream = ExtResource( "3_4rk2i" )
+stream_1/weight = 1.0
+stream_2/stream = ExtResource( "4_yor7e" )
+stream_2/weight = 1.0
+stream_3/stream = ExtResource( "5_nt6qe" )
+stream_3/weight = 1.0
+stream_4/stream = ExtResource( "6_0bsfe" )
+stream_4/weight = 2.0
 
 [node name="GameOver" type="Control"]
 anchor_right = 1.0
@@ -253,6 +287,9 @@ metadata/_edit_use_custom_anchors = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/GameOver = SubResource( "Animation_js46j" )
 anims/RESET = SubResource( "Animation_whmcx" )
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
+stream = SubResource( "AudioStreamRandomizer_hn0pe" )
 
 [connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -26,6 +26,7 @@ func trigger_game_over(cause: GameOverCause, score: int):
 func clear_game_over():
 	visible = false
 	$AnimationPlayer.stop()
+	$GameOverMusic.stop()
 
 
 func _on_play_again_pressed():

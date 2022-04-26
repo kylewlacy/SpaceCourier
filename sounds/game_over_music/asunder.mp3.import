@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cs6slp4sh7hgs"
+path="res://.godot/imported/asunder.mp3-90dd108e4dbb7b6f6293174b39a9440e.mp3str"
+
+[deps]
+
+source_file="res://sounds/game_over_music/asunder.mp3"
+dest_files=["res://.godot/imported/asunder.mp3-90dd108e4dbb7b6f6293174b39a9440e.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

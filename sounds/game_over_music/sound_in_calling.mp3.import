@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://tcxqtcgn508s"
+path="res://.godot/imported/sound_in_calling.mp3-ed59477e9efa4039319490043f9ff2b8.mp3str"
+
+[deps]
+
+source_file="res://sounds/game_over_music/sound_in_calling.mp3"
+dest_files=["res://.godot/imported/sound_in_calling.mp3-ed59477e9efa4039319490043f9ff2b8.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

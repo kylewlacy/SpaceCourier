@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dw0u3o82q74p1"
+path="res://.godot/imported/oceans_at_rest.mp3-434267684039273f26a20a68b361a958.mp3str"
+
+[deps]
+
+source_file="res://sounds/game_over_music/oceans_at_rest.mp3"
+dest_files=["res://.godot/imported/oceans_at_rest.mp3-434267684039273f26a20a68b361a958.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

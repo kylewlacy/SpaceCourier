@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpp1mvcr5vqec"
+path="res://.godot/imported/full_and_if_a_boat.mp3-942bb78cd370cf6afbb7ecf6b6e98002.mp3str"
+
+[deps]
+
+source_file="res://sounds/game_over_music/full_and_if_a_boat.mp3"
+dest_files=["res://.godot/imported/full_and_if_a_boat.mp3-942bb78cd370cf6afbb7ecf6b6e98002.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
