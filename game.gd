@@ -65,6 +65,7 @@ func trigger_game_over(cause: GameOver.GameOverCause):
 
 	game_over.emit(cause, score)
 	$Ship.crashed()
+	$MusicPlayer.stop()
 	$CameraController.enabled = false
 	$ShipCrashSoundController.play_crash_sound(cause, $Ship.linear_velocity.length())
 	game_over_triggered = true

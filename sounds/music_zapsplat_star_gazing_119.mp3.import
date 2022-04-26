@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dabylr2jqlsfj"
+path="res://.godot/imported/music_zapsplat_star_gazing_119.mp3-03bdfd6c5f8ef718fa0e5b11aa8d5403.mp3str"
+
+[deps]
+
+source_file="res://sounds/music_zapsplat_star_gazing_119.mp3"
+dest_files=["res://.godot/imported/music_zapsplat_star_gazing_119.mp3-03bdfd6c5f8ef718fa0e5b11aa8d5403.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
