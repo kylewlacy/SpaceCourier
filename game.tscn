@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://2ulhdxvq2l1p"]
+[gd_scene load_steps=67 format=3 uid="uid://2ulhdxvq2l1p"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_qart5"]
 [ext_resource type="PackedScene" uid="uid://ck16vkvk68bm7" path="res://pickups/pickup.tscn" id="2_iaxst"]
@@ -27,6 +27,30 @@
 [ext_resource type="AudioStream" uid="uid://dgyjg6q4exqgy" path="res://sounds/ship_crash_planet/medium/zapsplat_impacts_metal_thin_slightly_loose_hit_edge_resonate_003_77558.mp3" id="11_unq8n"]
 [ext_resource type="AudioStream" uid="uid://leb31rry06jc" path="res://sounds/ship_crash_planet/heavy/zapsplat_impacts_metal_light_hit_chime_resonate_004_73691.mp3" id="11_v7d4q"]
 [ext_resource type="AudioStream" uid="uid://cmt8sv8qafe6o" path="res://sounds/ship_crash_planet/light/zapsplat_impacts_metal_hit_thin_ping_002_71491.mp3" id="11_vudng"]
+[ext_resource type="AudioStream" uid="uid://2tccigqi2j7y" path="res://sounds/ship_crash_box/big/audio_mangler_crashes_glass_04_226.mp3" id="28_4nybr"]
+[ext_resource type="AudioStream" uid="uid://bj4wdfa0crgf7" path="res://sounds/ship_crash_box/big/audio_mangler_crashes_metal_glass_05_243.mp3" id="28_4q8cw"]
+[ext_resource type="AudioStream" uid="uid://carivrqc0hrhl" path="res://sounds/ship_crash_box/box/zapsplat_foley_cardboard_box_empty_kick_001_79503.mp3" id="28_a38ru"]
+[ext_resource type="AudioStream" uid="uid://dsxyymcovwtxe" path="res://sounds/ship_crash_box/big/audio_mangler_crashes_metal_glass_02_240.mp3" id="28_b38ki"]
+[ext_resource type="AudioStream" uid="uid://bpt1hfn0qrry6" path="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_smash_med_small_002_74599.mp3" id="28_c7su8"]
+[ext_resource type="AudioStream" uid="uid://dwfymsaieb4hp" path="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_bottle_shard_hit_junk_in_plastic_bin_smash_005_27799.mp3" id="28_g3js3"]
+[ext_resource type="AudioStream" uid="uid://brp4ikvhjj7np" path="res://sounds/ship_crash_box/box/zapsplat_foley_cardboard_box_empty_kick_002_79504.mp3" id="28_hj1tu"]
+[ext_resource type="AudioStream" uid="uid://c5e8s78xwy8cb" path="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_smash_med_small_003_74600.mp3" id="28_hjj1y"]
+[ext_resource type="AudioStream" uid="uid://bni8licmyoj11" path="res://sounds/ship_crash_box/box/zapsplat_foley_cardboard_box_medium_rectangular_set_down_or_drop_lightly_concrete_004_80854.mp3" id="28_howmu"]
+[ext_resource type="AudioStream" uid="uid://dnqkhddf6dae2" path="res://sounds/ship_crash_box/small/skyes_audio_Glass_Shards_Smash_Medium_Impact_Large_Glass_Shard_035.mp3" id="28_lt0nu"]
+[ext_resource type="AudioStream" uid="uid://4ocf7d5vjr7l" path="res://sounds/ship_crash_box/big/audio_mangler_crashes_metal_glass_09_247.mp3" id="28_m8xmj"]
+[ext_resource type="AudioStream" uid="uid://gjrqmlfjhojr" path="res://sounds/ship_crash_box/box/zapsplat_foley_cardboard_box_medium_rectangular_set_down_or_drop_lightly_concrete_006_80856.mp3" id="28_ngcap"]
+[ext_resource type="AudioStream" uid="uid://bsfqt2kf8ud5c" path="res://sounds/ship_crash_box/small/skyes_audio_Glass_Bottle_Break_Smash_Long_Clink_026.mp3" id="28_nkaiv"]
+[ext_resource type="AudioStream" uid="uid://dxp0n5kjdtcn3" path="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_soccer_ball_hit_bottle_knock_over_smash_ground_48212.mp3" id="28_q04hn"]
+[ext_resource type="AudioStream" uid="uid://biqu1dsem4y81" path="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_small_object_smash_break_hit_on_cardboard_002_29023.mp3" id="28_qadq4"]
+[ext_resource type="AudioStream" uid="uid://cdajejv84mbkq" path="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_bottle_shard_hit_junk_in_plastic_bin_smash_006_27800.mp3" id="28_r2ods"]
+[ext_resource type="AudioStream" uid="uid://c6anqxnn3tjob" path="res://sounds/ship_crash_box/big/audio_mangler_crashes_metal_glass_07_245.mp3" id="28_re64v"]
+[ext_resource type="AudioStream" uid="uid://c61sekgqg02p" path="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_smash_med_small_001_74678.mp3" id="28_ruuku"]
+[ext_resource type="AudioStream" uid="uid://47odmoutdg0w" path="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_bottle_shard_hit_junk_in_plastic_bin_smash_001_27795.mp3" id="28_skwyn"]
+[ext_resource type="AudioStream" uid="uid://dg6s62h6ljwvf" path="res://sounds/ship_crash_box/small/skyes_audio_Glass_Bottle_Break_Smash_Long_Crisp_Bright_Individual_Shards_at_the_End_027.mp3" id="28_u2ces"]
+[ext_resource type="AudioStream" uid="uid://brb5c60suebvb" path="res://sounds/ship_crash_box/big/audio_mangler_crashes_metal_glass_10_248.mp3" id="28_w70xc"]
+[ext_resource type="AudioStream" uid="uid://b55w2w63qqsjm" path="res://sounds/ship_crash_box/big/audio_mangler_crashes_metal_glass_01_239.mp3" id="28_wp4c6"]
+[ext_resource type="AudioStream" uid="uid://w4utqa1xeyh7" path="res://sounds/ship_crash_box/small/zapsplat_impacts_glass_bottle_shard_hit_junk_in_plastic_bin_smash_003_27797.mp3" id="28_wx6rn"]
+[ext_resource type="AudioStream" uid="uid://cql3cjxrap26w" path="res://sounds/ship_crash_box/box/zapsplat_foley_cardboard_box_medium_rectangular_set_down_or_drop_lightly_concrete_005_80855.mp3" id="28_x07j7"]
 
 [sub_resource type="CameraEffects" id="CameraEffects_oycn5"]
 override_exposure_enabled = true
@@ -173,6 +197,19 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4q4jd"]
+streams_count = 5
+stream_0/stream = ExtResource( "28_a38ru" )
+stream_0/weight = 1.0
+stream_1/stream = ExtResource( "28_hj1tu" )
+stream_1/weight = 1.0
+stream_2/stream = ExtResource( "28_howmu" )
+stream_2/weight = 1.0
+stream_3/stream = ExtResource( "28_x07j7" )
+stream_3/weight = 1.0
+stream_4/stream = ExtResource( "28_ngcap" )
+stream_4/weight = 1.0
+
 [node name="Game" type="Node"]
 process_mode = 1
 script = ExtResource( "1_qart5" )
@@ -293,6 +330,12 @@ light_sounds = [ExtResource( "11_50tkd" ), ExtResource( "11_vudng" ), ExtResourc
 mid_threshold = 0.7
 mid_sounds = [ExtResource( "11_mm3o4" ), ExtResource( "11_u7js6" ), ExtResource( "11_0pdrr" ), ExtResource( "11_1moc7" ), ExtResource( "11_sn2lt" ), ExtResource( "11_unq8n" )]
 heavy_sounds = [ExtResource( "11_cdmte" ), ExtResource( "11_j0a70" ), ExtResource( "11_v7d4q" ), ExtResource( "11_jx6n1" ), ExtResource( "11_dii6p" ), ExtResource( "11_no84k" )]
+small_crash_sounds = [ExtResource( "28_nkaiv" ), ExtResource( "28_u2ces" ), ExtResource( "28_lt0nu" ), ExtResource( "28_skwyn" ), ExtResource( "28_wx6rn" ), ExtResource( "28_g3js3" ), ExtResource( "28_r2ods" ), ExtResource( "28_qadq4" ), ExtResource( "28_ruuku" ), ExtResource( "28_c7su8" ), ExtResource( "28_hjj1y" ), ExtResource( "28_q04hn" )]
+big_crash_threshold = 1.0
+big_crash_sounds = [ExtResource( "28_4nybr" ), ExtResource( "28_wp4c6" ), ExtResource( "28_b38ki" ), ExtResource( "28_4q8cw" ), ExtResource( "28_re64v" ), ExtResource( "28_m8xmj" ), ExtResource( "28_w70xc" )]
+
+[node name="BoxCrashSound" type="AudioStreamPlayer" parent="ShipCrashSoundController"]
+stream = SubResource( "AudioStreamRandomizer_4q4jd" )
 
 [connection signal="crashed_into_planet" from="Ship" to="." method="_on_ship_crashed_into_planet"]
 [connection signal="picked_up" from="InitialPickup" to="." method="_on_initial_pickup_picked_up"]

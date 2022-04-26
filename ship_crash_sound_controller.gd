@@ -34,10 +34,11 @@ func play_crash_sound(cause: GameOver.GameOverCause, ship_speed: float):
 			else:
 				push_warning("Could not pick planet crash sound")
 		GameOver.GameOverCause.CRASHED_BOX:
+			$BoxCrashSound.play()
 			if ship_speed > big_crash_threshold && big_crash_sounds.size() > 0:
 				stream = big_crash_sounds[randi_range(0, big_crash_sounds.size() - 1)]
 			elif small_crash_sounds.size() > 0:
-				stream = big_crash_sounds[randi_range(0, small_crash_sounds.size() - 1)]
+				stream = small_crash_sounds[randi_range(0, small_crash_sounds.size() - 1)]
 			else:
 				push_warning("Could not pick box crash sound")
 
