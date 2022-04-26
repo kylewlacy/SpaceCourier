@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://by8vwhbwq8rt8"
+path="res://.godot/imported/gas_burner_loop.mp3-db384492d30ffa8421672fcb7a97dff4.mp3str"
+
+[deps]
+
+source_file="res://sounds/gas_burner_loop.mp3"
+dest_files=["res://.godot/imported/gas_burner_loop.mp3-db384492d30ffa8421672fcb7a97dff4.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

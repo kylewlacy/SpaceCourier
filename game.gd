@@ -26,13 +26,22 @@ func _ready():
 
 	$Earth.rotation_speed = 0
 
-func _process(_delta):
+func _process(delta):
 	var smoke_emission_point = $Ship.get_smoke_position()
 	var smoke_emission_normal = (smoke_emission_point - $Ship.global_transform.origin).normalized()
 	var rotated_smoke_emission_normal = Quaternion(Vector3.FORWARD, PI / 2) * smoke_emission_normal
 	$ShipSmoke.emission_points = PackedVector3Array([smoke_emission_point])
 	$ShipSmoke.emission_normals = PackedVector3Array([rotated_smoke_emission_normal])
 	$ShipSmoke.emitting = $Ship.is_thrusting()
+
+	if $Ship.is_thrusting():
+		if not $ShipThrustSound.playing:
+			$ShipThrustSound.play()
+		$ShipThrustSound.volume_db = clamp($ShipThrustSound.volume_db + (300 * delta), -80, -10)
+	else:
+		$ShipThrustSound.volume_db = clamp($ShipThrustSound.volume_db - (300 * delta), -80, -10)
+		if $ShipThrustSound.volume_db <= -80 && $ShipThrustSound.playing:
+			$ShipThrustSound.stop()
 
 func _physics_process(_delta):
 	update_ship_curve()
