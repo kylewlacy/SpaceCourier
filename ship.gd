@@ -94,10 +94,13 @@ func get_smoke_position() -> Vector3:
 func is_thrusting() -> bool:
 	return ship_is_thrusting
 
+func is_crashed() -> bool:
+	return ship_state == ShipState.CRASHED
+
 func complete_intro():
 	ship_state = ShipState.STANDARD
 
-func crashed():
+func crash():
 	ship_state = ShipState.CRASHED
 	ship_is_thrusting = false
 	angular_damp = 0

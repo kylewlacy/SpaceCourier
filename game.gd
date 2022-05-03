@@ -64,19 +64,19 @@ func trigger_game_over(cause: GameOver.GameOverCause):
 		return
 
 	game_over.emit(cause, score)
-	$Ship.crashed()
+	$Ship.crash()
 	$MusicPlayer.stop()
 	$CameraController.enabled = false
 	$ShipCrashSoundController.play_crash_sound(cause, $Ship.linear_velocity.length())
 	game_over_triggered = true
 
 func _on_pickup_collided(_pickup, body):
-	if body == $Ship && not $Ship.crashed():
+	if body == $Ship and not $Ship.is_crashed():
 		trigger_game_over(GameOver.GameOverCause.CRASHED_BOX)
 
 
 func _on_pickup_picked_up(pickup, body):
-	if body == $Ship:
+	if body == $Ship and not $Ship.is_crashed():
 		score += 1
 		$BoxCollectSound.play()
 
