@@ -18,6 +18,8 @@ var max_distance = 15
 var game_over_triggered = false
 
 func _ready():
+	$ShipPath.curve.clear_points()
+
 	$ShipSmoke.emitting = false
 	$ShipSmoke.global_transform.origin = Vector3.ZERO
 	$ShipSmoke.rotation = Vector3.ZERO
@@ -49,7 +51,6 @@ func _physics_process(_delta):
 	if get_fuzziness() >= 1.0:
 		trigger_game_over(GameOver.GameOverCause.LOST_SIGNAL)
 
-# TODO: This function slows down significantly after collecting lots of pickups
 func update_ship_curve():
 	var ship_curve = $ShipPath.curve
 	ship_curve.add_point($Ship.get_attachment_position())
@@ -58,6 +59,17 @@ func update_ship_curve():
 	for i in range(attached_pickup_followers.size()):
 		var follow = attached_pickup_followers[i]
 		follow.offset = ship_curve_length - (1.0 + (i * 0.5))
+
+	var max_curve_length = 3.0 + (attached_pickup_followers.size() * 0.5)
+	var removed_points = 0
+	while true:
+		if ship_curve.get_baked_length() <= max_curve_length:
+			break
+		if removed_points >= 10:
+			break
+
+		ship_curve.remove_point(0)
+		removed_points += 1
 
 func trigger_game_over(cause: GameOver.GameOverCause):
 	if game_over_triggered:
