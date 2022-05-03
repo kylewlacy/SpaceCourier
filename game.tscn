@@ -321,6 +321,7 @@ anims/RESET = SubResource( "Animation_1udlt" )
 transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 1.21072e-08, -7.45058e-09, -2.23517e-08, 1, 2.42337, -1.35616, -2.38419e-07)
 
 [node name="ShipCrashSoundController" type="AudioStreamPlayer" parent="."]
+bus = &"SoundFX"
 script = ExtResource( "10_bxt63" )
 light_sounds = [ExtResource( "11_50tkd" ), ExtResource( "11_vudng" ), ExtResource( "11_2vuyw" ), ExtResource( "11_n4xew" ), ExtResource( "11_i6wpp" )]
 mid_threshold = 0.7
@@ -332,19 +333,23 @@ big_crash_sounds = [ExtResource( "28_4nybr" ), ExtResource( "28_wp4c6" ), ExtRes
 
 [node name="BoxCrashSound" type="AudioStreamPlayer" parent="ShipCrashSoundController"]
 stream = SubResource( "AudioStreamRandomizer_4q4jd" )
+bus = &"SoundFX"
 
 [node name="ShipThrustSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( "52_ccprc" )
 volume_db = -10.0
 pitch_scale = 1.94
+bus = &"SoundFX"
 
 [node name="BoxCollectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( "53_o2a1b" )
+bus = &"SoundFX"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( "54_fmcct" )
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [connection signal="crashed_into_planet" from="Ship" to="." method="_on_ship_crashed_into_planet"]
 [connection signal="picked_up" from="InitialPickup" to="." method="_on_initial_pickup_picked_up"]
