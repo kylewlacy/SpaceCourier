@@ -268,13 +268,6 @@ far_stars = 5000
 star_seed = 2
 mesh = ExtResource( "9_0wgbm" )
 
-[node name="Example" type="Node3D" parent="Starfield"]
-
-[node name="ExampleStar" type="MeshInstance3D" parent="Starfield/Example"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.20032, -9.80873)
-mesh = ExtResource( "9_0wgbm" )
-skeleton = NodePath("../..")
-
 [node name="Area" type="Area3D" parent="Starfield"]
 
 [node name="Near" type="CollisionShape3D" parent="Starfield/Area"]

@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 @export
@@ -19,15 +20,7 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.set_seed(star_seed)
-	remove_example()
 	generate_stars()
-
-# For testing purposes, the starfield includes an example star. We remove it
-# at runtime
-func remove_example():
-	for example in $Example.get_children():
-		example.queue_free()
-	$Example.queue_free()
 
 func generate_stars():
 	for i in range(near_stars):
