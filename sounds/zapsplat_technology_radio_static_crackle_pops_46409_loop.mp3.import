@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yodery1mvtif"
+path="res://.godot/imported/zapsplat_technology_radio_static_crackle_pops_46409_loop.mp3-b51bcd416d94f1f6f605b98330a92758.mp3str"
+
+[deps]
+
+source_file="res://sounds/zapsplat_technology_radio_static_crackle_pops_46409_loop.mp3"
+dest_files=["res://.godot/imported/zapsplat_technology_radio_static_crackle_pops_46409_loop.mp3-b51bcd416d94f1f6f605b98330a92758.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
