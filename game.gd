@@ -128,7 +128,7 @@ func _on_initial_pickup_picked_up(pickup, body):
 		$Ship.complete_intro()
 		$Earth.rotation_speed = 0.15
 		$CameraController.enabled = true
-		$EarthAnimation.play("IntroToStandard")
+		$IntroAnimation.play("IntroToStandard")
 		pickup.scale = Vector3.ONE
 
 	_on_pickup_picked_up(pickup, body)
