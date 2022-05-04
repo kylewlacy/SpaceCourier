@@ -12,8 +12,8 @@ var attached_pickup_followers: Array[PathFollow3D] = []
 
 var score = 0
 
-var fuzzy_distance = 9
-var max_distance = 15
+var fuzzy_distance = 3
+var max_distance = 8
 
 var game_over_triggered = false
 
@@ -137,11 +137,40 @@ func _on_ship_crashed_into_planet(_planet):
 	trigger_game_over(GameOver.GameOverCause.CRASHED_PLANET)
 
 func get_fuzziness() -> float:
-	var distance_from_origin = ($Ship.global_transform.origin - $FuzzinessOrigin.global_transform.origin).length()
-	if distance_from_origin >= max_distance:
+	var min_pos = Vector3.ZERO
+	var max_pos = Vector3.ZERO
+
+	var planet_nodes = get_tree().get_nodes_in_group("planets")
+	for node in planet_nodes:
+		var planet := node as Planet
+		if not planet:
+			push_warning("Node in 'planets' group is not type Planet")
+			continue
+
+		if min_pos == Vector3.ZERO:
+			min_pos = planet.position
+		if max_pos == Vector3.ZERO:
+			max_pos = planet.position
+
+		var node_pos = planet.position
+		min_pos = Vector3(min(min_pos.x, node_pos.x - planet.radius), min(min_pos.y, node_pos.y - planet.radius), min(min_pos.z, node_pos.z - planet.radius))
+		max_pos = Vector3(max(max_pos.x, node_pos.x + planet.radius), max(max_pos.y, node_pos.y + planet.radius), max(max_pos.z, node_pos.z + planet.radius))
+
+	var box = AABB(min_pos, max_pos - min_pos)
+	var distance = distance_to_box(box, $Ship.global_transform.origin)
+
+	if distance >= max_distance:
 		return 1.0
-	elif distance_from_origin <= fuzzy_distance:
+	elif distance <= fuzzy_distance:
 		return 0.0
 	else:
-		return (distance_from_origin - fuzzy_distance) / (max_distance - fuzzy_distance)
+		return (distance - fuzzy_distance) / (max_distance - distance)
 
+func distance_to_box(box: AABB, position: Vector3) -> float:
+	var box_center = box.position + (box.size / 2)
+	var p = position - box_center
+	var r = box.size / 2
+	var dx = max(abs(p.x) - r.x, 0)
+	var dy = max(abs(p.y) - r.y, 0)
+	var dz = max(abs(p.z) - r.z, 0)
+	return Vector3(dx, dy, dz).length()

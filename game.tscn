@@ -340,9 +340,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.47491, 1.55157, 0)
 anims/IntroToStandard = SubResource( "Animation_olby1" )
 anims/RESET = SubResource( "Animation_1udlt" )
 
-[node name="FuzzinessOrigin" type="Position3D" parent="."]
-transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 1.21072e-08, -7.45058e-09, -2.23517e-08, 1, 2.42337, -1.35616, -2.38419e-07)
-
 [node name="ShipCrashSoundController" type="AudioStreamPlayer" parent="."]
 bus = &"SoundFX"
 script = ExtResource( "10_bxt63" )
