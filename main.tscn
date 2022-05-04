@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://da5s1567nv6p2"]
+[gd_scene load_steps=10 format=3 uid="uid://da5s1567nv6p2"]
 
 [ext_resource type="PackedScene" uid="uid://2ulhdxvq2l1p" path="res://game.tscn" id="1_lw6pi"]
 [ext_resource type="Script" path="res://main.gd" id="1_oti6d"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bcs1dnexdxvcl" path="res://pause_menu.tscn" id="3_idnlm"]
 [ext_resource type="PackedScene" uid="uid://bmvrjr0dlxx3" path="res://game_over.tscn" id="5_sv86h"]
 [ext_resource type="Shader" path="res://fuzz.gdshader" id="6_i76gb"]
+[ext_resource type="AudioStream" uid="uid://6rvbvkn328es" path="res://sounds/music_zapsplat_among_the_stars.mp3" id="7_mbyrn"]
+[ext_resource type="AudioStream" uid="uid://djd54pjkskp7f" path="res://sounds/esm_square_pop_game_organic_cartoon.mp3" id="8_kkvda"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ki0hi"]
 shader = ExtResource( "6_i76gb" )
@@ -32,3 +34,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="GameOver" parent="." instance=ExtResource( "5_sv86h" )]
+
+[node name="MusicPreview" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( "7_mbyrn" )
+bus = &"Music"
+
+[node name="SoundPreview" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( "8_kkvda" )
+bus = &"Sound"
+
+[connection signal="changed_music_volume" from="MainMenu" to="." method="on_changed_music_volume"]
+[connection signal="changed_sound_volume" from="MainMenu" to="." method="on_changed_sound_volume"]
+[connection signal="play_sound_preview" from="MainMenu" to="." method="play_sound_preview"]
+[connection signal="start_music_preview" from="MainMenu" to="." method="start_music_preview"]
+[connection signal="stop_music_preview" from="MainMenu" to="." method="stop_music_preview"]

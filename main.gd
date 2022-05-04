@@ -11,6 +11,9 @@ enum GameState {MAIN_MENU, PLAYING, ENDED}
 
 var game_state = GameState.MAIN_MENU
 
+var music_preview_playing = false
+var sound_preview_playing = false
+
 func _ready():
 	$MainMenu.start.connect(start_game)
 	$MainMenu.quit.connect(quit_game)
@@ -66,7 +69,11 @@ func toggle_pause():
 func quit_game():
 	get_tree().quit()
 
-func _process(_delta):
+func _process(delta: float):
+	process_fuzziness()
+	process_sound(delta)
+
+func process_fuzziness():
 	match game_state:
 		GameState.PLAYING:
 			if game:
@@ -83,6 +90,56 @@ func set_fuzziness(fuzziness: float):
 	$Fuzziness.visible = fuzziness > 0
 	$Fuzziness/FuzzRect.material.set_shader_param("alpha", fuzziness)
 
+func process_sound(delta: float):
+	if can_play_preview_sounds():
+		if music_preview_playing:
+			$MusicPreview.volume_db = linear2db(clamp(db2linear($MusicPreview.volume_db) + 2 * delta, 0, 1))
+			if not $MusicPreview.playing:
+				$MusicPreview.play()
+		else:
+			if $MusicPreview.playing:
+				$MusicPreview.volume_db = linear2db(clamp(db2linear($MusicPreview.volume_db) - 4 * delta, 0, 1))
+				if $MusicPreview.volume_db < -60:
+					$MusicPreview.stop()
+
+	else:
+		if $MusicPreview.playing:
+			$MusicPreview.stop()
+		if $SoundPreview.playing:
+			$SoundPreview.stop()
+
+func can_play_preview_sounds() -> bool:
+	if game_state == GameState.MAIN_MENU:
+		return true
+	elif $PauseMenu.visible:
+		return true
+	else:
+		return false
+
 func _unhandled_input(event: InputEvent):
 	if event.is_action_released("pause") && game_state == GameState.PLAYING:
 		toggle_pause()
+
+func start_music_preview():
+	music_preview_playing = true
+
+func stop_music_preview():
+	music_preview_playing = false
+
+func play_sound_preview():
+	if not $SoundPreview.playing:
+		$SoundPreview.play()
+
+
+func on_changed_music_volume(volume: float):
+	$MainMenu.set_music_volume(volume)
+
+	var volume_db = linear2db(clamp(volume, 0, 1))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), volume_db)
+
+
+func on_changed_sound_volume(volume: float):
+	$MainMenu.set_sound_volume(volume)
+
+	var volume_db = linear2db(clamp(volume, 0, 1))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sound"), volume_db)

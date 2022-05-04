@@ -29,9 +29,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -415.0
-offset_top = -435.0
+offset_top = -731.0
 offset_right = 415.0
-offset_bottom = -285.0
+offset_bottom = -581.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Start"
@@ -44,9 +44,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -415.0
-offset_top = -218.0
+offset_top = -486.0
 offset_right = 415.0
-offset_bottom = -68.0
+offset_bottom = -336.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Quit
@@ -54,5 +54,79 @@ text = "Quit
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
+[node name="SoundSlider" type="HSlider" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -296.0
+offset_top = -226.0
+offset_right = 415.0
+offset_bottom = -210.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+tick_count = 19
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="SoundLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -411.0
+offset_top = -243.0
+offset_right = -312.0
+offset_bottom = -195.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Sound"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="MusicSlider" type="HSlider" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -296.0
+offset_top = -151.0
+offset_right = 415.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+tick_count = 19
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="MusicLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -411.0
+offset_top = -168.0
+offset_right = -312.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Music"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="SoundSlider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="drag_ended" from="MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="drag_started" from="MusicSlider" to="." method="_on_music_slider_drag_started"]
+[connection signal="value_changed" from="MusicSlider" to="." method="_on_music_slider_value_changed"]
