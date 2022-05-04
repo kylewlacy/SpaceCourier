@@ -15,6 +15,9 @@ var music_preview_playing = false
 var sound_preview_playing = false
 
 func _ready():
+	self.update_music_volume(0.8)
+	self.update_sound_volume(0.8)
+
 	$MainMenu.start.connect(start_game)
 	$MainMenu.quit.connect(quit_game)
 
