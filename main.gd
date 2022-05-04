@@ -25,6 +25,19 @@ func _ready():
 	$GameOver.on_play_again.connect(start_game)
 	$GameOver.on_quit.connect(quit_game)
 
+	$MainMenu.changed_music_volume.connect(update_music_volume)
+	$MainMenu.changed_sound_volume.connect(update_sound_volume)
+	$MainMenu.play_sound_preview.connect(play_sound_preview)
+	$MainMenu.start_music_preview.connect(start_music_preview)
+	$MainMenu.stop_music_preview.connect(stop_music_preview)
+
+	$PauseMenu.changed_music_volume.connect(update_music_volume)
+	$PauseMenu.changed_sound_volume.connect(update_sound_volume)
+	$PauseMenu.play_sound_preview.connect(play_sound_preview)
+	$PauseMenu.start_music_preview.connect(start_music_preview)
+	$PauseMenu.stop_music_preview.connect(stop_music_preview)
+
+
 func start_game():
 	$GameOver.clear_game_over()
 
@@ -131,15 +144,19 @@ func play_sound_preview():
 		$SoundPreview.play()
 
 
-func on_changed_music_volume(volume: float):
-	$MainMenu.set_music_volume(volume)
+func update_music_volume(volume: float):
+	if main_menu:
+		main_menu.set_music_volume(volume)
+	$PauseMenu.set_music_volume(volume)
 
 	var volume_db = linear2db(clamp(volume, 0, 1))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), volume_db)
 
 
-func on_changed_sound_volume(volume: float):
-	$MainMenu.set_sound_volume(volume)
+func update_sound_volume(volume: float):
+	if main_menu:
+		main_menu.set_sound_volume(volume)
+	$PauseMenu.set_sound_volume(volume)
 
 	var volume_db = linear2db(clamp(volume, 0, 1))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sound"), volume_db)

@@ -35,9 +35,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -204.0
-offset_top = -472.0
+offset_top = -690.0
 offset_right = 204.0
-offset_bottom = -376.0
+offset_bottom = -594.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Resume"
@@ -50,9 +50,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -204.0
-offset_top = -334.0
+offset_top = -501.0
 offset_right = 204.0
-offset_bottom = -238.0
+offset_bottom = -405.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Restart"
@@ -65,15 +65,89 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -204.0
-offset_top = -191.0
+offset_top = -331.0
 offset_right = 204.0
-offset_bottom = -95.0
+offset_bottom = -235.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Quit"
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
+[node name="SoundSlider" type="HSlider" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -178.0
+offset_right = 197.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+tick_count = 9
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="SoundLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -195.0
+offset_right = -101.0
+offset_bottom = -147.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Sound"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="MusicSlider" type="HSlider" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -114.0
+offset_right = 196.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+tick_count = 9
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="MusicLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -133.0
+offset_right = -101.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Music"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="SoundSlider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="drag_ended" from="MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="drag_started" from="MusicSlider" to="." method="_on_music_slider_drag_started"]
+[connection signal="value_changed" from="MusicSlider" to="." method="_on_music_slider_value_changed"]

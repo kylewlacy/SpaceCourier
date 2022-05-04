@@ -42,9 +42,3 @@ bus = &"Music"
 [node name="SoundPreview" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( "8_kkvda" )
 bus = &"Sound"
-
-[connection signal="changed_music_volume" from="MainMenu" to="." method="on_changed_music_volume"]
-[connection signal="changed_sound_volume" from="MainMenu" to="." method="on_changed_sound_volume"]
-[connection signal="play_sound_preview" from="MainMenu" to="." method="play_sound_preview"]
-[connection signal="start_music_preview" from="MainMenu" to="." method="start_music_preview"]
-[connection signal="stop_music_preview" from="MainMenu" to="." method="stop_music_preview"]
