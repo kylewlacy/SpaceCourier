@@ -10,6 +10,9 @@ signal play_sound_preview
 signal changed_music_volume(volume: float)
 signal changed_sound_volume(volume: float)
 
+func _ready():
+	$StartButton.grab_focus()
+
 func set_music_volume(new_value: float):
 	$MusicSlider.value = new_value
 
@@ -22,19 +25,17 @@ func _on_start_button_pressed():
 func _on_quit_button_pressed():
 	quit.emit()
 
-
 func _on_sound_slider_value_changed(value: float):
 	play_sound_preview.emit()
 	changed_sound_volume.emit(value)
 
-
 func _on_music_slider_value_changed(value):
 	changed_music_volume.emit(value)
 
-
-func _on_music_slider_drag_started():
+func _on_music_slider_focus_entered():
 	start_music_preview.emit()
-
-
-func _on_music_slider_drag_ended(value_changed):
+	
+func _on_music_slider_focus_exited():
 	stop_music_preview.emit()
+	
+

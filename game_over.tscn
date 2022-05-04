@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmvrjr0dlxx3"]
+[gd_scene load_steps=12 format=3 uid="uid://bmvrjr0dlxx3"]
 
 [ext_resource type="Theme" uid="uid://cyusk16m2fbev" path="res://ui_theme.tres" id="1_gyh3o"]
 [ext_resource type="Script" path="res://game_over.gd" id="2_jnft4"]
@@ -173,6 +173,12 @@ tracks/5/keys = {
 "values": [true]
 }
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rfkhh"]
+_data = {
+"GameOver": SubResource( "Animation_js46j" ),
+"RESET": SubResource( "Animation_whmcx" )
+}
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hn0pe"]
 streams_count = 5
 random_pitch = 1.0
@@ -198,9 +204,10 @@ script = ExtResource( "2_jnft4" )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color(0, 0, 0, 0.498039)
+color = Color(0, 0, 0, 0)
 
 [node name="GameOverTitle" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -220,6 +227,7 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="GameOverMessage" type="Label" parent="."]
+visible = false
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -238,6 +246,7 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="ScoreMessage" type="Label" parent="."]
+visible = false
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -255,6 +264,7 @@ metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="PlayAgain" type="Button" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -265,11 +275,16 @@ offset_right = 211.0
 offset_bottom = 305.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Quit")
 text = "Play Again"
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="Quit" type="Button" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -280,18 +295,25 @@ offset_right = 211.0
 offset_bottom = 442.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../PlayAgain")
+focus_neighbor_bottom = NodePath("../PlayAgain")
+focus_next = NodePath("../PlayAgain")
+focus_previous = NodePath("../PlayAgain")
 text = "Quit
 "
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/GameOver = SubResource( "Animation_js46j" )
-anims/RESET = SubResource( "Animation_whmcx" )
+libraries = {
+"": SubResource( "AnimationLibrary_rfkhh" )
+}
 
 [node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
 stream = SubResource( "AudioStreamRandomizer_hn0pe" )
 bus = &"Music"
 
+[connection signal="draw" from="PlayAgain" to="." method="_on_play_again_draw"]
 [connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
