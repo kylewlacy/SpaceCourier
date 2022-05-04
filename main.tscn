@@ -32,3 +32,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="GameOver" parent="." instance=ExtResource( "5_sv86h" )]
+
+[node name="CurrentScore" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+offset_right = 213.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Current Score"
+vertical_alignment = 2

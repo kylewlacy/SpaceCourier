@@ -37,6 +37,10 @@ func clear_game_over():
 func _on_play_again_pressed():
 	fast_forward_input_threshold = 1
 	on_play_again.emit()
+	
+func _process(delta):
+	if visible and Input.is_action_just_pressed("restart"):
+		on_play_again.emit()
 
 func _on_quit_pressed():
 	on_quit.emit()

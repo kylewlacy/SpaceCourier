@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://2ulhdxvq2l1p"]
+[gd_scene load_steps=71 format=3 uid="uid://2ulhdxvq2l1p"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_qart5"]
 [ext_resource type="PackedScene" uid="uid://ck16vkvk68bm7" path="res://pickups/pickup.tscn" id="2_iaxst"]
@@ -103,50 +103,6 @@ _data = [Vector2(0.404639, 0), 0.0, 0.0, 0, 0, Vector2(1, 14.7297), 0.0, 0.0, 0,
 [sub_resource type="Curve" id="Curve_35228"]
 _data = [Vector2(0, 0.558559), 0.0, 0.0, 0, 0, Vector2(0.384021, 0.63964), 0.0, 0.0, 0, 0, Vector2(0.744845, 0.801802), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 
-[sub_resource type="Animation" id="Animation_olby1"]
-resource_name = "IntroToStandard"
-length = 4.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation_speed")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0.15, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 4)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:radius")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 1, 1.104, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 4)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"points": PackedFloat32Array(-0.0766464, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 4)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:rotation:z")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"points": PackedFloat32Array(0.645162, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 4)
-}
-
 [sub_resource type="Animation" id="Animation_1udlt"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -200,6 +156,56 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_olby1"]
+resource_name = "IntroToStandard"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation_speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0.15, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 1, 1.104, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"points": PackedFloat32Array(-0.0766464, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"points": PackedFloat32Array(0.645162, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3qp1w"]
+_data = {
+"IntroToStandard": SubResource( "Animation_olby1" ),
+"RESET": SubResource( "Animation_1udlt" )
+}
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4q4jd"]
 streams_count = 5
 stream_0/stream = ExtResource( "28_a38ru" )
@@ -219,7 +225,7 @@ script = ExtResource( "1_qart5" )
 pickup_scene = ExtResource( "2_iaxst" )
 
 [node name="Earth" parent="." instance=ExtResource( "3_8jt20" )]
-transform = Transform3D(0.25337, -2.92063e-06, -1.98389, 1.19913, 1.59331, 0.153143, 1.58048, -1.20886, 0.201851, 2.46459, -3.29967, 0)
+transform = Transform3D(0.253369, -3.45707e-06, -1.98389, 1.19913, 1.59331, 0.153142, 1.58047, -1.20887, 0.20185, 2.46459, -3.29967, 0)
 rotation_speed = 0.0
 radius = 2.0
 material = ExtResource( "4_aw3lj" )
@@ -314,8 +320,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.47491, 1.55157, 0)
 
 [node name="EarthAnimation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Earth")
-anims/IntroToStandard = SubResource( "Animation_olby1" )
-anims/RESET = SubResource( "Animation_1udlt" )
+libraries = {
+"": SubResource( "AnimationLibrary_3qp1w" )
+}
 
 [node name="FuzzinessOrigin" type="Position3D" parent="."]
 transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 1.21072e-08, -7.45058e-09, -2.23517e-08, 1, 2.42337, -1.35616, -2.38419e-07)

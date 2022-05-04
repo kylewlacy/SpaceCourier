@@ -37,8 +37,10 @@ func _physics_process(delta):
 		ShipState.STANDARD:
 			pass
 
-	if Input.is_action_pressed("thrust"):
-		apply_central_force(Vector3(0, thrust_force, 0) * quaternion.inverse())
+	var thrust_strength = Input.get_action_strength("thrust")
+	print(thrust_strength)
+	if thrust_strength > 0.01:
+		apply_central_force(Vector3(0, thrust_force * thrust_strength, 0) * quaternion.inverse())
 		ship_is_thrusting = true
 	else:
 		ship_is_thrusting = false
