@@ -63,3 +63,7 @@ func handle_game_over_press(event: InputEvent):
 
 		if game_over_inputs >= fast_forward_input_threshold:
 			$AnimationPlayer.playback_speed = 20
+
+
+func _on_animation_player_animation_finished(anim_name):
+	$PlayAgain.grab_focus()
