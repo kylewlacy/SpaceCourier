@@ -1,27 +1,47 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://bfp4kk4b2clmp"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://bfp4kk4b2clmp"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_77ww0"]
+resource_name = "Compressor"
+ratio = 35.0
+gain = 1.2
+release_ms = 34.0
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_qb4kf"]
+resource_name = "LowPassFilter"
+cutoff_hz = 20500.0
 
 [resource]
-bus/1/name = &"Music"
+bus/1/name = &"Fuzz"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"
-bus/2/name = &"Sound"
+bus/2/name = &"Distortable"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
-bus/3/name = &"Fuzz"
+bus/2/effect/0/effect = SubResource( "AudioEffectCompressor_77ww0" )
+bus/2/effect/0/enabled = false
+bus/2/effect/1/effect = SubResource( "AudioEffectLowPassFilter_qb4kf" )
+bus/2/effect/1/enabled = false
+bus/3/name = &"Music"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
-bus/3/send = &"Sound"
-bus/4/name = &"SoundFX"
+bus/3/send = &"Distortable"
+bus/4/name = &"Sound"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
 bus/4/volume_db = 0.0
-bus/4/send = &"Sound"
+bus/4/send = &"Distortable"
+bus/5/name = &"SoundFX"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = &"Distortable"

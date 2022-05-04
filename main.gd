@@ -14,7 +14,22 @@ var game_state = GameState.MAIN_MENU
 var music_preview_playing = false
 var sound_preview_playing = false
 
+var fuzz_compressor: AudioEffectCompressor
+var fuzz_low_pass: AudioEffectLowPassFilter
+
 func _ready():
+	fuzz_compressor = AudioEffectCompressor.new()
+	fuzz_compressor.ratio = 35
+	fuzz_compressor.gain = 1.2
+	fuzz_compressor.attack_us = 20
+	fuzz_compressor.release_ms = 34
+
+	fuzz_low_pass = AudioEffectLowPassFilter.new()
+	fuzz_low_pass.cutoff_hz = 10
+
+	AudioServer.add_bus_effect(AudioServer.get_bus_index("Distortable"), fuzz_compressor)
+	AudioServer.add_bus_effect(AudioServer.get_bus_index("Distortable"), fuzz_low_pass)
+
 	self.update_music_volume(0.8)
 	self.update_sound_volume(0.8)
 
@@ -106,6 +121,19 @@ func set_fuzziness(fuzziness: float):
 	$Fuzziness.visible = fuzziness > 0
 	$Fuzziness/FuzzRect.material.set_shader_param("alpha", fuzziness)
 
+	if fuzziness > 0:
+		if not $FuzzSound.playing:
+			$FuzzSound.play()
+		AudioServer.set_bus_bypass_effects(AudioServer.get_bus_index("Distortable"), false)
+	elif fuzziness <= 0:
+		if $FuzzSound.playing:
+			$FuzzSound.stop()
+		AudioServer.set_bus_bypass_effects(AudioServer.get_bus_index("Distortable"), true)
+	$FuzzSound.volume_db = linear2db(clamp(fuzziness, 0, 1))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Distortable"), linear2db(clamp(1 - fuzziness, 0.5, 1)))
+	fuzz_compressor.threshold = clamp(fuzziness * 2, 0, 1) * -16
+	fuzz_low_pass.cutoff_hz = 10 + ((1 - fuzziness) * 20490)
+
 func process_sound(delta: float):
 	if can_play_preview_sounds():
 		if music_preview_playing:
@@ -154,6 +182,7 @@ func update_music_volume(volume: float):
 
 	var volume_db = linear2db(clamp(volume, 0, 1))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), volume_db)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Fuzz"), volume_db)
 
 
 func update_sound_volume(volume: float):
