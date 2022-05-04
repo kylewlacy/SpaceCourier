@@ -19,11 +19,6 @@ process_mode = 3
 script = ExtResource( "1_oti6d" )
 game_scene = ExtResource( "1_lw6pi" )
 
-[node name="MainMenu" parent="." instance=ExtResource( "2_ml2ch" )]
-
-[node name="PauseMenu" parent="." instance=ExtResource( "3_idnlm" )]
-visible = false
-
 [node name="Fuzziness" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
@@ -33,6 +28,11 @@ anchor_bottom = 1.0
 material = SubResource( "ShaderMaterial_ki0hi" )
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="MainMenu" parent="." instance=ExtResource( "2_ml2ch" )]
+
+[node name="PauseMenu" parent="." instance=ExtResource( "3_idnlm" )]
+visible = false
 
 [node name="GameOver" parent="." instance=ExtResource( "5_sv86h" )]
 
