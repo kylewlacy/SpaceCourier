@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://2ulhdxvq2l1p"]
+[gd_scene load_steps=71 format=3 uid="uid://2ulhdxvq2l1p"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_qart5"]
 [ext_resource type="PackedScene" uid="uid://ck16vkvk68bm7" path="res://pickups/pickup.tscn" id="2_iaxst"]
@@ -124,133 +124,6 @@ height = 0.2
 radial_segments = 16
 rings = 8
 
-[sub_resource type="Animation" id="Animation_1udlt"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Earth:rotation_speed")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Earth:radius")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Earth:rotation:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"points": PackedFloat32Array(-0.0766464, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Earth:rotation:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"points": PackedFloat32Array(-1.4694, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Earth:rotation:z")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"points": PackedFloat32Array(0.645162, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CameraController:fov")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [42.0]
-}
-
-[sub_resource type="Animation" id="Animation_olby1"]
-resource_name = "IntroToStandard"
-length = 4.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Earth:rotation_speed")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"points": PackedFloat32Array(0, -2.5, 0, 2.5, 0, 1, 0.15, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0.4, 3.7)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Earth:radius")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"points": PackedFloat32Array(2, -1, 0, 1, 0, 1, 1.104, -1, 0, 1, 0, 1),
-"times": PackedFloat32Array(0.2, 3.4)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Earth:rotation:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"points": PackedFloat32Array(-0.0766464, -0.25, 0, 0.25, 0, 1, 0, -1, 0, 1, 0, 1),
-"times": PackedFloat32Array(0.1, 3.9)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Earth:rotation:z")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"points": PackedFloat32Array(0.645162, -0.25, 0, 0.25, 0, 1, 0, -1, 0, 1, 0, 1),
-"times": PackedFloat32Array(0, 4)
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CameraController:fov")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.2, 3.4),
-"transitions": PackedFloat32Array(0.378929, 0.420448),
-"update": 0,
-"values": [42.0, 50.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_no2oh"]
-_data = {
-"IntroToStandard": SubResource( "Animation_olby1" ),
-"RESET": SubResource( "Animation_1udlt" )
-}
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4q4jd"]
 streams_count = 5
 stream_0/stream = ExtResource( "28_a38ru" )
@@ -270,7 +143,7 @@ script = ExtResource( "1_qart5" )
 pickup_scene = ExtResource( "2_iaxst" )
 
 [node name="Earth" parent="." instance=ExtResource( "3_8jt20" )]
-transform = Transform3D(0.25337, -3.21865e-06, -1.98389, 1.19913, 1.59331, 0.153142, 1.58048, -1.20886, 0.201851, 2.46459, -3.29967, 0)
+transform = Transform3D(0.342542, 0.118736, -1.96687, 1.18978, 1.57889, 0.302522, 1.5707, -1.22188, 0.199784, 2.46459, -3.29967, 0)
 rotation_speed = 0.0
 radius = 2.0
 material = ExtResource( "4_aw3lj" )
@@ -354,11 +227,6 @@ draw_pass_1 = SubResource( "SphereMesh_vi7fp" )
 
 [node name="InitialPickup" parent="." instance=ExtResource( "2_iaxst" )]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.47491, 1.55157, 0)
-
-[node name="IntroAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource( "AnimationLibrary_no2oh" )
-}
 
 [node name="ShipCrashSoundController" type="AudioStreamPlayer" parent="."]
 bus = &"SoundFX"
