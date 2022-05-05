@@ -4,7 +4,7 @@ extends Node
 var game_scene: PackedScene
 
 @onready
-var main_menu: MainMenu = $MainMenu
+var main_menu = $MainMenu
 var game: Game
 
 enum GameState {MAIN_MENU, PLAYING, ENDED}

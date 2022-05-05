@@ -34,8 +34,6 @@ func _on_music_slider_value_changed(value):
 
 func _on_music_slider_focus_entered():
 	start_music_preview.emit()
-	
+
 func _on_music_slider_focus_exited():
 	stop_music_preview.emit()
-	
-
