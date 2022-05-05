@@ -3,7 +3,7 @@ extends Node3D
 class_name Planet
 
 @export
-var rotation_speed = 0.15
+var rotation_speed: float = 0.15
 
 @export
 var radius: float = 1.0:

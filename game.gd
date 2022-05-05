@@ -126,9 +126,14 @@ func get_new_pickup_location() -> Vector3:
 func _on_initial_pickup_picked_up(pickup, body):
 	if body == $Ship:
 		$Ship.complete_intro()
-		$Earth.rotation_speed = 0.15
+
+		var intro_tween = create_tween().set_parallel(true)
+		intro_tween.tween_property($CameraController, "fov", 50.0, 3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		intro_tween.tween_property($Earth, "rotation:x", 0.0, 2.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		intro_tween.tween_property($Earth, "rotation:z", 0.0, 2.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		intro_tween.tween_property($Earth, "radius", 1.108, 2.75).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		intro_tween.tween_property($Earth, "rotation_speed", 0.15, 5)
 		$CameraController.enabled = true
-		$IntroAnimation.play("IntroToStandard")
 		pickup.scale = Vector3.ONE
 
 	_on_pickup_picked_up(pickup, body)
