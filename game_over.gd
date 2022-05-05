@@ -57,7 +57,7 @@ func handle_game_over_input(event: InputEvent):
 	elif event is InputEventKey and event.pressed:
 		handle_game_over_press(event)
 
-func handle_game_over_press(event: InputEvent):
+func handle_game_over_press(_event: InputEvent):
 	if visible and $AnimationPlayer.is_playing():
 		game_over_inputs += 1
 
@@ -65,5 +65,5 @@ func handle_game_over_press(event: InputEvent):
 			$AnimationPlayer.playback_speed = 20
 
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	$PlayAgain.grab_focus()
