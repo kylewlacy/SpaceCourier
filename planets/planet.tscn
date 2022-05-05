@@ -18,3 +18,5 @@ gravity_mass = 1.0
 
 [node name="CollisionHitbox" type="CollisionShape3D" parent="."]
 shape = SubResource( "SphereShape3D_aithb" )
+
+[node name="GPUParticlesCollisionSphere3D" type="GPUParticlesCollisionSphere3D" parent="."]
