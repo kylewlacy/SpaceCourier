@@ -17,12 +17,36 @@ var max_distance = 8
 
 var game_over_triggered = false
 
+var ship_smoke_points: CurveXYZTexture
+var ship_smoke_normals: CurveXYZTexture
+
 func _ready():
 	$ShipPath.curve.clear_points()
+
+	ship_smoke_points = CurveXYZTexture.new()
+	ship_smoke_points.width = 32
+	ship_smoke_points.curve_x = Curve.new()
+	ship_smoke_points.curve_y = Curve.new()
+	ship_smoke_points.curve_z = Curve.new()
+	ship_smoke_points.curve_x.add_point(Vector2.ZERO)
+	ship_smoke_points.curve_y.add_point(Vector2.ZERO)
+	ship_smoke_points.curve_z.add_point(Vector2.ZERO)
+
+	ship_smoke_normals = CurveXYZTexture.new()
+	ship_smoke_normals.width = 32
+	ship_smoke_normals.curve_x = Curve.new()
+	ship_smoke_normals.curve_y = Curve.new()
+	ship_smoke_normals.curve_z = Curve.new()
+	ship_smoke_normals.curve_x.add_point(Vector2.ZERO)
+	ship_smoke_normals.curve_y.add_point(Vector2.ZERO)
+	ship_smoke_normals.curve_z.add_point(Vector2.ZERO)
 
 	$ShipSmoke.emitting = false
 	$ShipSmoke.global_transform.origin = Vector3.ZERO
 	$ShipSmoke.rotation = Vector3.ZERO
+	$ShipSmoke.process_material.emission_shape = ParticlesMaterial.EMISSION_SHAPE_DIRECTED_POINTS
+	$ShipSmoke.process_material.emission_point_texture = ship_smoke_points
+	$ShipSmoke.process_material.emission_normal_texture = ship_smoke_normals
 
 	$CameraController.set_focus($Ship)
 
@@ -32,8 +56,8 @@ func _process(delta):
 	var smoke_emission_point = $Ship.get_smoke_position()
 	var smoke_emission_normal = (smoke_emission_point - $Ship.global_transform.origin).normalized()
 	var rotated_smoke_emission_normal = Quaternion(Vector3.FORWARD, PI / 2) * smoke_emission_normal
-	$ShipSmoke.emission_points = PackedVector3Array([smoke_emission_point])
-	$ShipSmoke.emission_normals = PackedVector3Array([rotated_smoke_emission_normal])
+
+	set_ship_smoke_point(smoke_emission_point, rotated_smoke_emission_normal)
 	$ShipSmoke.emitting = $Ship.is_thrusting()
 
 	if $Ship.is_thrusting():
@@ -44,6 +68,15 @@ func _process(delta):
 		$ShipThrustSound.volume_db = clamp($ShipThrustSound.volume_db - (300 * delta), -80, -10)
 		if $ShipThrustSound.volume_db <= -80 && $ShipThrustSound.playing:
 			$ShipThrustSound.stop()
+
+func set_ship_smoke_point(position: Vector3, normal: Vector3):
+	ship_smoke_points.curve_x.set_point_value(0, position.x)
+	ship_smoke_points.curve_y.set_point_value(0, position.y)
+	ship_smoke_points.curve_z.set_point_value(0, position.z)
+
+	ship_smoke_normals.curve_x.set_point_value(0, normal.x)
+	ship_smoke_normals.curve_y.set_point_value(0, normal.y)
+	ship_smoke_normals.curve_z.set_point_value(0, normal.z)
 
 func _physics_process(_delta):
 	update_ship_curve()
