@@ -41,7 +41,12 @@ func _ready():
 	ship_smoke_normals.curve_y.add_point(Vector2.ZERO)
 	ship_smoke_normals.curve_z.add_point(Vector2.ZERO)
 
+	# TODO: Validate this works
+	$ShipSmoke.visible = false
+	$ShipSmoke.emitting = true
 	$ShipSmoke.emitting = false
+	$ShipSmoke.visible = true
+
 	$ShipSmoke.global_transform.origin = Vector3.ZERO
 	$ShipSmoke.rotation = Vector3.ZERO
 	$ShipSmoke.process_material.emission_shape = ParticlesMaterial.EMISSION_SHAPE_DIRECTED_POINTS
@@ -51,13 +56,17 @@ func _ready():
 	$CameraController.set_focus($Ship)
 
 	$Earth.rotation_speed = 0
+#
+#	update_ship_smoke_point()
+#	await get_tree().process_frame
+#	#$ShipSmoke.visible = true
 
 func _process(delta):
 	var smoke_emission_point = $Ship.get_smoke_position()
 	var smoke_emission_normal = (smoke_emission_point - $Ship.global_transform.origin).normalized()
 	var rotated_smoke_emission_normal = Quaternion(Vector3.FORWARD, PI / 2) * smoke_emission_normal
 
-	set_ship_smoke_point(smoke_emission_point, rotated_smoke_emission_normal)
+	update_ship_smoke_point()
 	$ShipSmoke.emitting = $Ship.is_thrusting()
 
 	if $Ship.is_thrusting():
@@ -69,14 +78,18 @@ func _process(delta):
 		if $ShipThrustSound.volume_db <= -80 && $ShipThrustSound.playing:
 			$ShipThrustSound.stop()
 
-func set_ship_smoke_point(position: Vector3, normal: Vector3):
+func update_ship_smoke_point():
+	var position = $Ship.get_smoke_position()
+	var normal = (position - $Ship.global_transform.origin).normalized()
+	var rotated_normal = Quaternion(Vector3.FORWARD, PI / 2) * normal
+
 	ship_smoke_points.curve_x.set_point_value(0, position.x)
 	ship_smoke_points.curve_y.set_point_value(0, position.y)
 	ship_smoke_points.curve_z.set_point_value(0, position.z)
 
-	ship_smoke_normals.curve_x.set_point_value(0, normal.x)
-	ship_smoke_normals.curve_y.set_point_value(0, normal.y)
-	ship_smoke_normals.curve_z.set_point_value(0, normal.z)
+	ship_smoke_normals.curve_x.set_point_value(0, rotated_normal.x)
+	ship_smoke_normals.curve_y.set_point_value(0, rotated_normal.y)
+	ship_smoke_normals.curve_z.set_point_value(0, rotated_normal.z)
 
 func _physics_process(_delta):
 	update_ship_curve()
