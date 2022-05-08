@@ -122,7 +122,7 @@ script = ExtResource( "1_qart5" )
 pickup_scene = ExtResource( "2_iaxst" )
 
 [node name="Earth" parent="." instance=ExtResource( "3_8jt20" )]
-transform = Transform3D(0.342541, 0.118738, -1.96687, 1.18978, 1.57889, 0.302523, 1.5707, -1.22188, 0.199783, 2.46459, -3.29967, 0)
+transform = Transform3D(0.342541, 0.118738, -1.96687, 1.18978, 1.57889, 0.302523, 1.5707, -1.22188, 0.199782, 2.46459, -3.29967, 0)
 rotation_speed = 0.0
 radius = 2.0
 material = ExtResource( "4_aw3lj" )

@@ -17,6 +17,12 @@ var max_distance = 8
 
 var game_over_triggered = false
 
+@onready
+var ship_smoke_emission_initial_velocity_min = $ShipSmoke.initial_velocity_min
+
+@onready
+var ship_smoke_emission_initial_velocity_max = $ShipSmoke.initial_velocity_min
+
 func _ready():
 	$ShipPath.curve.clear_points()
 
@@ -32,9 +38,13 @@ func _process(delta):
 	var smoke_emission_point = $Ship.get_smoke_position()
 	var smoke_emission_normal = (smoke_emission_point - $Ship.global_transform.origin).normalized()
 	var rotated_smoke_emission_normal = Quaternion(Vector3.FORWARD, PI / 2) * smoke_emission_normal
+	var smoke_emission_velocity_factor = 0.5 + ($Ship.current_thrust_strength * 0.5)
+
 	$ShipSmoke.emission_points = PackedVector3Array([smoke_emission_point])
 	$ShipSmoke.emission_normals = PackedVector3Array([rotated_smoke_emission_normal])
 	$ShipSmoke.emitting = $Ship.is_thrusting()
+	$ShipSmoke.initial_velocity_min = ship_smoke_emission_initial_velocity_min * smoke_emission_velocity_factor
+	$ShipSmoke.initial_velocity_max = ship_smoke_emission_initial_velocity_max * smoke_emission_velocity_factor
 
 	var current_volume = db2linear($ShipThrustSound.volume_db)
 	var target_volume = $Ship.current_thrust_strength * 0.3
