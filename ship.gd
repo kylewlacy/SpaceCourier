@@ -11,7 +11,7 @@ var gravity_pow = 2.0
 @export
 var rotation_force = 25 * PI / 360
 
-var ship_is_thrusting: bool = false
+var current_thrust_strength: float = 0.0
 
 enum ShipState {INTRO, STANDARD, CRASHED}
 
@@ -37,12 +37,8 @@ func _physics_process(delta):
 		ShipState.STANDARD:
 			pass
 
-	var thrust_strength = Input.get_action_strength("thrust")
-	if thrust_strength > 0.01:
-		apply_central_force(Vector3(0, thrust_force * thrust_strength, 0) * quaternion.inverse())
-		ship_is_thrusting = true
-	else:
-		ship_is_thrusting = false
+	var thrust_strength = update_current_thrust_strength()
+	apply_central_force(Vector3(0, thrust_force * thrust_strength, 0) * quaternion.inverse())
 
 	if Input.is_action_pressed("rotate_left"):
 		apply_torque(Vector3(0, 0, rotation_force))
@@ -50,14 +46,13 @@ func _physics_process(delta):
 		apply_torque(Vector3(0, 0, -rotation_force))
 
 func physics_process_intro(delta: float):
-	if Input.is_action_pressed("thrust"):
-		ship_is_thrusting = true
+	var thrust_strength = update_current_thrust_strength()
+	if thrust_strength > 0:
 		if intro_lock_remaining > 0:
-			intro_lock_remaining -= delta
+			intro_lock_remaining -= delta * thrust_strength
 		else:
-			apply_central_force(Vector3(0, thrust_force, 0))
+			apply_central_force(Vector3(0, thrust_force * thrust_strength, 0))
 	else:
-		ship_is_thrusting = false
 		if intro_lock_remaining > 0:
 			intro_lock_remaining = intro_lock_duration
 
@@ -70,6 +65,15 @@ func physics_process_intro(delta: float):
 		if intro_thrust_force < thrust_force:
 			intro_thrust_force += thrust_force * delta * intro_ramp_thrust_duration
 		intro_thrust_force = min(thrust_force, intro_thrust_force)
+
+func update_current_thrust_strength() -> float:
+	if ship_state == ShipState.CRASHED:
+		return current_thrust_strength
+
+	current_thrust_strength = Input.get_action_strength("thrust")
+	if current_thrust_strength <= 0.01:
+		current_thrust_strength = 0.0
+	return current_thrust_strength
 
 func _on_gravity_attraction(attractor: GravityAttractor):
 	match ship_state:
@@ -93,7 +97,7 @@ func get_smoke_position() -> Vector3:
 	return $SmokePoint.global_transform.origin
 
 func is_thrusting() -> bool:
-	return ship_is_thrusting
+	return current_thrust_strength > 0.0
 
 func is_crashed() -> bool:
 	return ship_state == ShipState.CRASHED
@@ -103,7 +107,7 @@ func complete_intro():
 
 func crash():
 	ship_state = ShipState.CRASHED
-	ship_is_thrusting = false
+	current_thrust_strength = 0
 	angular_damp = 0
 
 # NOTE: This handles planetary collisions. Pickup collisions are handled in `Game`/`Pickup`
