@@ -135,7 +135,7 @@ fov = 42.0
 size = 6.41
 script = ExtResource( "5_x5dlx" )
 enabled = false
-margin = 0.671
+margin = 1.5
 
 [node name="Sun" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.603, 8.41744, 9.64028)

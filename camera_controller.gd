@@ -39,8 +39,8 @@ func calculate_target_position() -> Vector3:
 
 	var new_position = aabb_center(bounding_box)
 	var hfov = get_hfov()
-	var v_distance = (bounding_box.size.x / 2) / tan(deg2rad(fov) / 2)
-	var h_distance = (bounding_box.size.y / 2) / tan(deg2rad(hfov) / 2)
+	var v_distance = (bounding_box.size.x / 2) / tan(deg2rad(hfov) / 2)
+	var h_distance = (bounding_box.size.y / 2) / tan(deg2rad(fov) / 2)
 	var distance = max(v_distance, h_distance)
 
 	new_position.z += distance
@@ -49,11 +49,11 @@ func calculate_target_position() -> Vector3:
 
 func get_hfov() -> float:
 	# https://calculator.academy/vertical-fov-calculator/
-	return rad2deg(2 * atan(tan(deg2rad(fov / 2)) * get_inverse_aspect_ratio()))
+	return rad2deg(2 * atan(tan(deg2rad(fov / 2)) * get_aspect_ratio()))
 
-func get_inverse_aspect_ratio() -> float:
+func get_aspect_ratio() -> float:
 	var viewport_rect = get_viewport().get_visible_rect()
-	return viewport_rect.size.y / viewport_rect.size.x
+	return viewport_rect.size.x / viewport_rect.size.y
 
 func make_aabb(center: Vector3, box_size: Vector3) -> AABB:
 	return AABB(center - (box_size / 2), box_size)
