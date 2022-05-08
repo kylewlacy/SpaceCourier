@@ -11,6 +11,10 @@ signal play_sound_preview
 signal changed_music_volume(volume: float)
 signal changed_sound_volume(volume: float)
 
+func _process(delta):
+	if visible and Input.is_action_just_pressed("restart"):
+		on_restart.emit()
+
 func set_music_volume(new_value: float):
 	$MusicSlider.value = new_value
 
