@@ -36,14 +36,17 @@ func _process(delta):
 	$ShipSmoke.emission_normals = PackedVector3Array([rotated_smoke_emission_normal])
 	$ShipSmoke.emitting = $Ship.is_thrusting()
 
-	if $Ship.is_thrusting():
-		if not $ShipThrustSound.playing:
-			$ShipThrustSound.play()
-		$ShipThrustSound.volume_db = clamp($ShipThrustSound.volume_db + (200 * delta), -30, -10)
-	else:
-		$ShipThrustSound.volume_db = clamp($ShipThrustSound.volume_db - (300 * delta), -80, -10)
-		if $ShipThrustSound.volume_db <= -80 && $ShipThrustSound.playing:
-			$ShipThrustSound.stop()
+	var current_volume = db2linear($ShipThrustSound.volume_db)
+	var target_volume = $Ship.current_thrust_strength * 0.3
+	if not $ShipThrustSound.playing:
+		current_volume = 0.0
+	var new_volume = lerp(current_volume, target_volume, 0.1)
+
+	$ShipThrustSound.volume_db = linear2db(new_volume)
+	if new_volume > 0 and not $ShipThrustSound.playing:
+		$ShipThrustSound.play()
+	elif new_volume <= 0 and $ShipThrustSound.playing:
+		$ShipThrustSound.stop()
 
 func _physics_process(_delta):
 	update_ship_curve()
