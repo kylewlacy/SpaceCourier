@@ -43,6 +43,11 @@ _global_script_classes=[{
 "class": &"Planet",
 "language": &"GDScript",
 "path": "res://planets/planet.gd"
+}, {
+"base": "Object",
+"class": &"TrailPath3D",
+"language": &"GDScript",
+"path": "res://utils/trail_path_3d.gd"
 }]
 _global_script_class_icons={
 "Game": "",
@@ -51,7 +56,8 @@ _global_script_class_icons={
 "MainMenu": "",
 "PauseMenu": "",
 "Pickup": "",
-"Planet": ""
+"Planet": "",
+"TrailPath3D": ""
 }
 
 [application]
