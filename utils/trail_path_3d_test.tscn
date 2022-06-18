@@ -19,22 +19,34 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_fnnj7"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node" type="Node"]
 script = ExtResource( "1_f2lk3" )
+debug_trail_size = 10000
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SizeLabel" type="Label" parent="Control"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 64
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, -12.235)
 environment = SubResource( "Environment_jltrg" )
 
-[node name="Path3D" type="Path3D" parent="."]
+[node name="Path3D" type="Path3D" parent="Node3D"]
 curve = SubResource( "Curve3D_m0jg7" )
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+[node name="PathFollow3D" type="PathFollow3D" parent="Node3D/Path3D"]
 transform = Transform3D(1, 0.000631295, 0, -0.000631295, 1, 0, 0, 0, 1, 3.22239, 4.09734, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Path3D/PathFollow3D"]
 mesh = SubResource( "BoxMesh_fnnj7" )
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
 transform = Transform3D(-0.780539, -0.448843, 0.435085, -0.0538482, 0.741708, 0.668558, -0.622783, 0.498407, -0.603101, 3.22239, 8.00117, -5.76485)
