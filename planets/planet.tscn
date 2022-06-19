@@ -14,7 +14,7 @@ script = ExtResource( "1_fs0qn" )
 mesh = SubResource( "SphereMesh_smpky" )
 
 [node name="GravityAttractor" parent="." instance=ExtResource( "1_ltld6" )]
-gravity_mass = 1.0
+radius = 1.0
 
 [node name="CollisionHitbox" type="CollisionShape3D" parent="."]
 shape = SubResource( "SphereShape3D_aithb" )

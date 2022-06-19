@@ -84,9 +84,13 @@ func _on_gravity_attraction(attractor: GravityAttractor):
 		ShipState.STANDARD:
 			pass
 
+	# Apply gravity linearly based on the distance to the surface of the attractor
 	var vector = attractor.global_transform.origin - global_transform.origin
-	var distance = vector.length()
-	var gravity_force = vector.normalized() * (attractor.gravity_mass / pow(distance, gravity_pow))
+	var distance_to_center = vector.length()
+	var min_strength = attractor.radius + 2 # Apply gravity starting 2 units away from the surface
+	var max_strength = attractor.radius + 0.5 # Gravity is strongest 0.5 units away from the surface
+	var gravity_percent = clamp(1 - ((distance_to_center - max_strength) / (min_strength - max_strength)), 0.0, 1.0)
+	var gravity_force = vector.normalized() * gravity_pow * attractor.gravity_mass * gravity_percent
 	apply_central_force(gravity_force)
 
 

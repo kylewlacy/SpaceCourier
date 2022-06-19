@@ -13,6 +13,7 @@ var radius: float = 1.0:
 		scale.x = new_radius
 		scale.y = new_radius
 		scale.z = new_radius
+		$GravityAttractor.radius = new_radius
 
 
 @export
