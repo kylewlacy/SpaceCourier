@@ -74,6 +74,12 @@ func update_ship_curve():
 		follow.global_transform.origin = follow.global_transform.origin.slerp(transform.origin, 0.1)
 	var step_result = ship_trail.for_each_step(0.5, 1.0, attached_pickup_followers.size(), TrailPath3D.Direction.END_TO_START, for_each_step)
 
+	if step_result.exit_result == TrailPath3D.ExitResult.COMPLETE:
+		# Remove excess points from the trail to keep memory usage down. We keep
+		# 200 extra points past what we currently need so that, if another
+		# pickup is added, it should have enough extra space
+		ship_trail.clean(TrailPath3D.Direction.END_TO_START, step_result.points_stepped + 200, 100)
+
 func trigger_game_over(cause: GameOver.GameOverCause):
 	if game_over_triggered:
 		return

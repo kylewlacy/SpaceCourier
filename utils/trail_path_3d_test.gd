@@ -43,6 +43,11 @@ func _process(_delta):
 	if state["points_drawn"] > max_points_to_draw:
 		push_warning("Expected to draw at most %s but drew %s points" % [max_points_to_draw, state["points_drawn"]])
 
+	if result.exit_result == TrailPath3D.ExitResult.COMPLETE:
+		var cleaned = trail.clean(TrailPath3D.Direction.END_TO_START, result.points_stepped + 100, 1000)
+		if cleaned > 0:
+			print("Cleaned %s point(s)" % cleaned)
+
 
 	ship_curve_debug_mesh.surface_end()
 

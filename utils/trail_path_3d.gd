@@ -147,3 +147,20 @@ func for_each_step(space_between_points: float, start_distance: float, max_count
 
 	state.exit_result = ExitResult.COMPLETE
 	return state
+
+func clean(direction: Direction, after: int, threshold: int) -> int:
+	after = max(after, 0)
+	var starting_size = size()
+
+	var to_remove = size() - after
+	if to_remove < max(threshold, 1):
+		return 0
+
+	match direction:
+		Direction.START_TO_END:
+			transforms.resize(after * 4)
+		Direction.END_TO_START:
+			transforms = transforms.slice(to_remove * 4)
+			pass
+
+	return starting_size - size()
