@@ -34,10 +34,12 @@ func _ready():
 	self.update_sound_volume(0.8)
 
 	$MainMenu.start.connect(start_game)
+	$MainMenu.toggle_fullscreen.connect(toggle_fullscreen)
 	$MainMenu.quit.connect(quit_game)
 
 	$PauseMenu.on_resume.connect(unpause)
 	$PauseMenu.on_restart.connect(start_game)
+	$PauseMenu.on_toggle_fullscreen.connect(toggle_fullscreen)
 	$PauseMenu.on_quit.connect(quit_game)
 
 	$GameOver.on_play_again.connect(start_game)
@@ -96,6 +98,13 @@ func toggle_pause():
 		unpause()
 	else:
 		pause()
+
+func toggle_fullscreen():
+	match DisplayServer.window_get_mode():
+		DisplayServer.WINDOW_MODE_WINDOWED, DisplayServer.WINDOW_MODE_MINIMIZED, DisplayServer.WINDOW_MODE_MAXIMIZED:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		_:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func quit_game():
 	get_tree().quit()
@@ -165,11 +174,7 @@ func _input(event: InputEvent):
 		toggle_pause()
 	if event.is_action_pressed("toggle_fullscreen"):
 		get_viewport().set_input_as_handled() # Prevent "Enter" from triggering other events
-		match DisplayServer.window_get_mode():
-			DisplayServer.WINDOW_MODE_WINDOWED, DisplayServer.WINDOW_MODE_MINIMIZED, DisplayServer.WINDOW_MODE_MAXIMIZED:
-				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-			_:
-				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		toggle_fullscreen()
 
 
 func start_music_preview():

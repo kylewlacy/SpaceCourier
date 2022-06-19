@@ -3,6 +3,7 @@ class_name PauseMenu
 
 signal on_resume
 signal on_restart
+signal on_toggle_fullscreen
 signal on_quit
 
 signal start_music_preview
@@ -51,3 +52,7 @@ func _on_pause_menu_focus_entered():
 func _on_pause_menu_visibility_changed():
 	if visible:
 		$ResumeButton.grab_focus()
+
+
+func _on_toggle_fullscreen_button_pressed():
+	on_toggle_fullscreen.emit()

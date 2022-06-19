@@ -9,6 +9,7 @@ signal stop_music_preview
 signal play_sound_preview
 signal changed_music_volume(volume: float)
 signal changed_sound_volume(volume: float)
+signal toggle_fullscreen
 
 func _ready():
 	$StartButton.grab_focus()
@@ -37,3 +38,6 @@ func _on_music_slider_focus_entered():
 
 func _on_music_slider_focus_exited():
 	stop_music_preview.emit()
+
+func _on_toggle_fullscreen_button_pressed():
+	toggle_fullscreen.emit()

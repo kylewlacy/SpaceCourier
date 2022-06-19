@@ -35,9 +35,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -204.0
-offset_top = -690.0
+offset_top = -834.0
 offset_right = 204.0
-offset_bottom = -594.0
+offset_bottom = -738.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_neighbor_top = NodePath("../MusicSlider")
@@ -54,14 +54,14 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -204.0
-offset_top = -501.0
+offset_top = -669.0
 offset_right = 204.0
-offset_bottom = -405.0
+offset_bottom = -573.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_neighbor_top = NodePath("../ResumeButton")
-focus_neighbor_bottom = NodePath("../QuitButton")
-focus_next = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../ToggleFullscreenButton")
+focus_next = NodePath("../ToggleFullscreenButton")
 focus_previous = NodePath("../ResumeButton")
 text = "Restart"
 metadata/_edit_layout_mode = 1
@@ -78,11 +78,30 @@ offset_right = 204.0
 offset_bottom = -235.0
 grow_horizontal = 2
 grow_vertical = 0
-focus_neighbor_top = NodePath("../RestartButton")
+focus_neighbor_top = NodePath("../ToggleFullscreenButton")
 focus_neighbor_bottom = NodePath("../SoundSlider")
 focus_next = NodePath("../SoundSlider")
-focus_previous = NodePath("../RestartButton")
+focus_previous = NodePath("../ToggleFullscreenButton")
 text = "Quit"
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="ToggleFullscreenButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -204.0
+offset_top = -502.0
+offset_right = 204.0
+offset_bottom = -406.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_top = NodePath("../RestartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../RestartButton")
+text = "Fullscreen"
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = false
 
@@ -168,6 +187,7 @@ metadata/_edit_use_custom_anchors = false
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ToggleFullscreenButton" to="." method="_on_toggle_fullscreen_button_pressed"]
 [connection signal="value_changed" from="SoundSlider" to="." method="_on_sound_slider_value_changed"]
 [connection signal="drag_ended" from="MusicSlider" to="." method="_on_music_slider_drag_ended"]
 [connection signal="drag_started" from="MusicSlider" to="." method="_on_music_slider_drag_started"]
