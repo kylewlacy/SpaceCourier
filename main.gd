@@ -160,9 +160,17 @@ func can_play_preview_sounds() -> bool:
 	else:
 		return false
 
-func _unhandled_input(event: InputEvent):
+func _input(event: InputEvent):
 	if event.is_action_released("pause") && game_state == GameState.PLAYING:
 		toggle_pause()
+	if event.is_action_pressed("toggle_fullscreen"):
+		get_viewport().set_input_as_handled() # Prevent "Enter" from triggering other events
+		match DisplayServer.window_get_mode():
+			DisplayServer.WINDOW_MODE_WINDOWED, DisplayServer.WINDOW_MODE_MINIMIZED, DisplayServer.WINDOW_MODE_MAXIMIZED:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			_:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
 
 func start_music_preview():
 	music_preview_playing = true
