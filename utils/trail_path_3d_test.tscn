@@ -3,13 +3,16 @@
 [ext_resource type="Script" path="res://utils/trail_path_3d_test.gd" id="1_f2lk3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2nlfo"]
+sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
 
 [sub_resource type="Sky" id="Sky_kthyi"]
 sky_material = SubResource( "ProceduralSkyMaterial_2nlfo" )
 
 [sub_resource type="Environment" id="Environment_jltrg"]
-background_mode = 2
+background_mode = 1
 sky = SubResource( "Sky_kthyi" )
+ambient_light_source = 2
+ambient_light_color = Color(0.38, 0.38, 0.38, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_m0jg7"]
 _data = {
@@ -21,7 +24,10 @@ _data = {
 
 [node name="Node" type="Node"]
 script = ExtResource( "1_f2lk3" )
-debug_trail_size = 10000
+steps_per_phys_frame = 10
+debug_trail_size = 100
+debug_trail_initial_offset = 2.0
+debug_trail_offset = 1.0
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
