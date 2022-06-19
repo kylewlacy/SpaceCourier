@@ -211,6 +211,7 @@ scale_amount_curve = SubResource( "Curve_35228" )
 
 [node name="InitialPickup" parent="." instance=ExtResource( "2_iaxst" )]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.47491, 1.55157, 0)
+pickup_hitbox_radius = 0.134
 
 [node name="ShipCrashSoundController" type="AudioStreamPlayer" parent="."]
 bus = &"Sound"

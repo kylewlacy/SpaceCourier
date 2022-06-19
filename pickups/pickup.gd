@@ -8,6 +8,20 @@ enum PickupState {READY_TO_PICKUP, ATTACHING, ATTACHED}
 
 var state: PickupState = PickupState.READY_TO_PICKUP
 
+@export var pickup_hitbox_radius: float:
+	get:
+		var hitbox_shape = $PickupArea/PickupHitbox.shape as SphereShape3D
+		if not hitbox_shape:
+			push_warning("Pickup hitbox was not a SphereShape3D")
+			return 1.0
+
+		return hitbox_shape.radius
+	set(new_radius):
+		var new_hitbox = SphereShape3D.new()
+		new_hitbox.radius = new_radius
+		$PickupArea/PickupHitbox.shape = new_hitbox
+
+
 @onready var time = 0.0
 
 func _process(delta):

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://160fnxuwnj2u" path="res://box.blend" id="2_uwt1r"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_au0w5"]
-radius = 0.15
+radius = 0.902544
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ewus5"]
 size = Vector3(0.1, 0.1, 0.1)
