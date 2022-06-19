@@ -96,7 +96,7 @@ func _on_pickup_picked_up(pickup, body):
 		$BoxCollectSound.play()
 
 		var follower = Node3D.new()
-		#follower.global_transform.origin = pickup.global_transform.origin
+		follower.global_transform.origin = pickup.global_transform.origin
 		$ShipPickups.add_child(follower)
 		attached_pickup_followers.append(follower)
 		pickup.attach(follower)
