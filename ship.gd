@@ -96,7 +96,16 @@ func _on_gravity_attraction(attractor: GravityAttractor):
 
 
 func get_attachment_transform() -> Transform3D:
-	return $AttachmentPoint.global_transform
+	match ship_state:
+		ShipState.CRASHED:
+			# When crashed, attach based on the attachment point's rotation.
+			# This gives a better "tumbling uncontrollably" look
+			return $AttachmentPoint.global_transform
+		_:
+			# Normally, attach based on the attachment point's position but
+			# rotate to match the ship's velocity
+			var attachment_point = $AttachmentPoint.global_transform.origin
+			return Transform3D(Basis.IDENTITY.looking_at(linear_velocity, Vector3.FORWARD) * Basis.from_euler(Vector3(PI / 2, PI, 0)), attachment_point)
 
 func get_smoke_position() -> Vector3:
 	return $SmokePoint.global_transform.origin
