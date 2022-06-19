@@ -8,6 +8,19 @@ enum PickupState {READY_TO_PICKUP, ATTACHING, ATTACHED}
 
 var state: PickupState = PickupState.READY_TO_PICKUP
 
+@onready var time = 0.0
+
+func _process(delta):
+	match state:
+		PickupState.READY_TO_PICKUP:
+			time += delta
+			$MeshOffset.transform.origin.y = cos(time * 2.5) * 0.02
+			$MeshOffset.rotate_y(delta * 1.25)
+		_:
+			var target = Transform3D.IDENTITY
+			$MeshOffset.transform = $MeshOffset.transform.sphere_interpolate_with(Transform3D.IDENTITY, 0.25)
+
+
 func attach(new_parent: Node, new_local_position: Vector3 = Vector3.ZERO):
 	if state != PickupState.READY_TO_PICKUP:
 		return

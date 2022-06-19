@@ -12,7 +12,9 @@ size = Vector3(0.1, 0.1, 0.1)
 [node name="Pickup" type="Node3D" groups=["camera_tracking"]]
 script = ExtResource( "1_s2pyg" )
 
-[node name="Mesh" parent="." instance=ExtResource( "2_uwt1r" )]
+[node name="MeshOffset" type="Node3D" parent="."]
+
+[node name="Mesh" parent="MeshOffset" instance=ExtResource( "2_uwt1r" )]
 transform = Transform3D(1.31134e-08, 0, -0.1, 0, 0.1, 0, 0.1, 0, 1.31134e-08, 0, 0, 0)
 
 [node name="PickupArea" type="Area3D" parent="."]
