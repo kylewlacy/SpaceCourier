@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://2ulhdxvq2l1p"]
+[gd_scene load_steps=67 format=3 uid="uid://2ulhdxvq2l1p"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_qart5"]
 [ext_resource type="PackedScene" uid="uid://ck16vkvk68bm7" path="res://pickups/pickup.tscn" id="2_iaxst"]
@@ -57,8 +57,6 @@
 
 [sub_resource type="CameraEffects" id="CameraEffects_oycn5"]
 override_exposure_enabled = true
-
-[sub_resource type="Curve3D" id="Curve3D_rvji6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkejh"]
 
@@ -151,12 +149,8 @@ transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, -2.08171, 1.81569, 0
 radius = 0.42
 material = ExtResource( "7_ucscd" )
 
-[node name="ShipPath" type="Path3D" parent="."]
-curve = SubResource( "Curve3D_rvji6" )
-
-[node name="ShipPathFollow" type="PathFollow3D" parent="ShipPath"]
-cubic_interp = false
-loop = false
+[node name="ShipPickups" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.57628e-07, 0)
 
 [node name="Pickups" type="Node3D" parent="."]
 

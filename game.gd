@@ -8,7 +8,7 @@ var pickup_scene: PackedScene
 
 var next_pickup_hemisphere = 0
 
-var attached_pickup_followers: Array[PathFollow3D] = []
+var attached_pickup_followers: Array[Node3D] = []
 
 var score = 0
 
@@ -23,9 +23,10 @@ var ship_smoke_emission_initial_velocity_min = $ShipSmoke.initial_velocity_min
 @onready
 var ship_smoke_emission_initial_velocity_max = $ShipSmoke.initial_velocity_min
 
-func _ready():
-	$ShipPath.curve.clear_points()
+@onready
+var ship_trail = TrailPath3D.new()
 
+func _ready():
 	$ShipSmoke.emitting = false
 	$ShipSmoke.global_transform.origin = Vector3.ZERO
 	$ShipSmoke.rotation = Vector3.ZERO
@@ -65,24 +66,13 @@ func _physics_process(_delta):
 		trigger_game_over(GameOver.GameOverCause.LOST_SIGNAL)
 
 func update_ship_curve():
-	var ship_curve = $ShipPath.curve
-	ship_curve.add_point($Ship.get_attachment_position())
-	var ship_curve_length = ship_curve.get_baked_length()
+	ship_trail.append($Ship.get_attachment_transform())
 
-	for i in range(attached_pickup_followers.size()):
-		var follow = attached_pickup_followers[i]
-		follow.offset = ship_curve_length - (1.0 + (i * 0.5))
-
-	var max_curve_length = 3.0 + (attached_pickup_followers.size() * 0.5)
-	var removed_points = 0
-	while true:
-		if ship_curve.get_baked_length() <= max_curve_length:
-			break
-		if removed_points >= 10:
-			break
-
-		ship_curve.remove_point(0)
-		removed_points += 1
+	var for_each_step = func(transform: Transform3D, index: int):
+		var follow = attached_pickup_followers[index]
+		follow.global_transform.basis = follow.global_transform.basis.slerp(transform.basis, 0.1)
+		follow.global_transform.origin = follow.global_transform.origin.slerp(transform.origin, 0.1)
+	var step_result = ship_trail.for_each_step(0.5, 1.0, attached_pickup_followers.size(), TrailPath3D.Direction.END_TO_START, for_each_step)
 
 func trigger_game_over(cause: GameOver.GameOverCause):
 	if game_over_triggered:
@@ -105,8 +95,9 @@ func _on_pickup_picked_up(pickup, body):
 		score += 1
 		$BoxCollectSound.play()
 
-		var follower = PathFollow3D.new()
-		$ShipPath.add_child(follower)
+		var follower = Node3D.new()
+		#follower.global_transform.origin = pickup.global_transform.origin
+		$ShipPickups.add_child(follower)
 		attached_pickup_followers.append(follower)
 		pickup.attach(follower)
 		spawn_new_pickup()

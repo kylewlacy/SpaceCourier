@@ -90,8 +90,9 @@ func _on_gravity_attraction(attractor: GravityAttractor):
 	apply_central_force(gravity_force)
 
 
-func get_attachment_position() -> Vector3:
-	return $AttachmentPoint.global_transform.origin
+
+func get_attachment_transform() -> Transform3D:
+	return $AttachmentPoint.global_transform
 
 func get_smoke_position() -> Vector3:
 	return $SmokePoint.global_transform.origin
