@@ -144,7 +144,6 @@ omni_range = 1000.0
 
 [node name="Ship" parent="." instance=ExtResource( "6_jpb2v" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42312, -0.936763, 0)
-gravity_pow = 1.3
 
 [node name="Moon" parent="." instance=ExtResource( "3_8jt20" )]
 transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, -2.08171, 1.81569, 0)

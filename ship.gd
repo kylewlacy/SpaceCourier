@@ -6,7 +6,7 @@ signal crashed_into_planet(planet: Planet)
 var thrust_force = 2
 
 @export
-var gravity_pow = 2.0
+var gravity_strength = 1.3
 
 @export
 var rotation_force = 25 * PI / 360
@@ -90,7 +90,7 @@ func _on_gravity_attraction(attractor: GravityAttractor):
 	var min_strength = attractor.radius + 2 # Apply gravity starting 2 units away from the surface
 	var max_strength = attractor.radius + 0.5 # Gravity is strongest 0.5 units away from the surface
 	var gravity_percent = clamp(1 - ((distance_to_center - max_strength) / (min_strength - max_strength)), 0.0, 1.0)
-	var gravity_force = vector.normalized() * gravity_pow * attractor.gravity_mass * gravity_percent
+	var gravity_force = vector.normalized() * gravity_strength * attractor.gravity_mass * gravity_percent
 	apply_central_force(gravity_force)
 
 
