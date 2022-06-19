@@ -34,11 +34,12 @@ func _process(_delta):
 	var max_points_to_draw = debug_trail_size if debug_trail_size > 0 else trail.size()#
 
 	var state = {"points_drawn": 0}
-	var for_each_transform = func(transform: Transform3D):
+	var for_each_transform = func(transform: Transform3D, index: int):
 		ship_curve_debug_mesh.surface_add_vertex(transform.origin)
 		state["points_drawn"] += 1
-	trail.for_each_step(debug_trail_offset, debug_trail_initial_offset, max_points_to_draw, TrailPath3D.Direction.END_TO_START, for_each_transform)
+	var result = trail.for_each_step(debug_trail_offset, debug_trail_initial_offset, max_points_to_draw, TrailPath3D.Direction.END_TO_START, for_each_transform)
 
+	print(result.debug_info())
 	if state["points_drawn"] > max_points_to_draw:
 		push_warning("Expected to draw at most %s but drew %s points" % [max_points_to_draw, state["points_drawn"]])
 
