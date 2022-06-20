@@ -105,7 +105,8 @@ func get_attachment_transform() -> Transform3D:
 			# Normally, attach based on the attachment point's position but
 			# rotate to match the ship's velocity
 			var attachment_point = $AttachmentPoint.global_transform.origin
-			return Transform3D(Basis.IDENTITY.looking_at(linear_velocity, Vector3.FORWARD) * Basis.from_euler(Vector3(PI / 2, PI, 0)), attachment_point)
+			var target = linear_velocity if linear_velocity != Vector3.ZERO else Vector3.UP
+			return Transform3D(Basis.IDENTITY.looking_at(target, Vector3.FORWARD) * Basis.from_euler(Vector3(PI / 2, PI, 0)), attachment_point)
 
 func get_smoke_position() -> Vector3:
 	return $SmokePoint.global_transform.origin

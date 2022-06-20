@@ -35,7 +35,7 @@ func _ready():
 
 	$Earth.rotation_speed = 0
 
-func _process(delta):
+func _process(_delta):
 	var smoke_emission_point = $Ship.get_smoke_position()
 	var smoke_emission_normal = (smoke_emission_point - $Ship.global_transform.origin).normalized()
 	var rotated_smoke_emission_normal = Quaternion(Vector3.FORWARD, PI / 2) * smoke_emission_normal

@@ -31,7 +31,6 @@ func _process(delta):
 			$MeshOffset.transform.origin.y = cos(time * 2.5) * 0.02
 			$MeshOffset.rotate_y(delta * 1.25)
 		_:
-			var target = Transform3D.IDENTITY
 			$MeshOffset.transform = $MeshOffset.transform.sphere_interpolate_with(Transform3D.IDENTITY, 0.25)
 
 

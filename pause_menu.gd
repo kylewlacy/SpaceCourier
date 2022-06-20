@@ -12,7 +12,7 @@ signal play_sound_preview
 signal changed_music_volume(volume: float)
 signal changed_sound_volume(volume: float)
 
-func _process(delta):
+func _process(_delta):
 	if visible and Input.is_action_just_pressed("restart"):
 		on_restart.emit()
 
